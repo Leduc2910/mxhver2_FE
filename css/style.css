@@ -13,7 +13,7 @@ body {
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
 	height: 100vh;
-	margin: -20px 0 50px;
+	margin-top: -20px;
 }
 
 h1 {
@@ -70,7 +70,7 @@ button.ghost {
 	border-color: #FFFFFF;
 }
 
-form {
+.my-form {
 	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;
