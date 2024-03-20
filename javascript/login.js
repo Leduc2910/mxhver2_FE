@@ -13,7 +13,7 @@ function showLoginPage() {
                 <input type="email" id="email" placeholder="Email" required/>
                 <input type="password" id="password" placeholder="Mật khẩu" required/>
                 <input type="password" id="confirmPassword" placeholder="Xác nhận mật khẩu" required/>
-                <button>Đăng ký</button>
+                <button onclick='register()' class="login_button ">Đăng ký</button>
             </div>
         </div>
         <div class="form-container sign-in-container my-form">
@@ -27,7 +27,7 @@ function showLoginPage() {
             <input type="email" id="username_login" placeholder="Tài khoản" required/>
             <input type="password" id="password_login" placeholder="Mật khẩu" required/>
             <a href="#">Quên mật khẩu</a>
-            <button>Đăng nhập</button>
+            <button >Đăng nhập</button>
         </div>
         <div class="overlay-container">
             <div class="overlay">
@@ -45,5 +45,27 @@ function showLoginPage() {
         </div>
     </div>`;
     document.getElementById('wrapper').innerHTML = html;
+
+    function register() {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let birthday = document.getElementById("birthday").value;
+        let user = {
+            username: username,
+            password: password,
+            confirmPassword: confirmPassword,
+            email: email,
+            phone: phone,
+            birthday: birthday
+        }
+        axios.post('http://localhost:8080/user/register', user).then(function (response) {
+            showLoginPage();
+        }).catch(function (error) {
+            console.log(error)
+        });
+    }
 }
 showLoginPage();
