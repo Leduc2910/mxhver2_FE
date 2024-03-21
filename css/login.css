@@ -73,7 +73,6 @@ button.ghost {
 form {
 	background-color: #FFFFFF;
 	display: flex;
-	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	padding: 0 50px;
@@ -85,7 +84,7 @@ input {
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;
-	margin: 8px 0;
+	margin: 15px 0;
 	width: 100%;
 }
 
@@ -249,4 +248,52 @@ footer i {
 footer a {
 	color: #3c97bf;
 	text-decoration: none;
+}
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	color: #333;
+	font-size: 62.5%;
+	font-family: 'Open Sans', sans-serif;
+}
+.main {
+	background: #f1f1f1;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+}
+
+.form-control {
+	height: 40px;
+	padding: 8px 12px;
+	border: 1px solid #b3b3b3;
+	border-radius: 3px;
+	outline: none;
+	font-size: 1.4rem;
+}
+
+.form-control:hover {
+	border-color: #1dbfaf;
+}
+
+.form-group.invalid .form-control {
+	border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+	color: #f33a58;
+}
+
+.form-message {
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+	padding: 4px 0 0;
+	text-align: right;
+}
+
+.spacer {
+	margin-top: 36px;
 }
