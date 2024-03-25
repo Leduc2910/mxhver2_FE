@@ -9,7 +9,6 @@
 </head>
 <body>
 <div id="wrapper">
-
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
         integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
@@ -19,5 +18,36 @@
 <script src="javascript/user/login.js"></script>
 <script src="javascript/config/script.js"></script>
 <script src="javascript/config/firebase.js"></script>
+<script>
+		document.addEventListener('DOMContentLoaded', function () {
+		Validator({
+			form: '#form-1',
+			formGroupSelector: '.form-group',
+			errorSelector: '.form-message',
+			rules: [
+				Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+				Validator.isEmail('#email'),
+				Validator.minLength('#password', 6),
+			],
+			onSubmit: function (data) {
+				console.log(data);
+			}
+		});
+
+
+		Validator({
+		form: '#form-2',
+		formGroupSelector: '.form-group',
+		errorSelector: '.form-message',
+		rules: [
+		Validator.isEmail('#email'),
+		Validator.minLength('#password', 6),
+		],
+		onSubmit: function (data) {
+		console.log(data);
+	}
+	});
+	});
+</script>
 </body>
 </html>
