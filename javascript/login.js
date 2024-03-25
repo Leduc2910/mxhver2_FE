@@ -27,7 +27,11 @@ function showLoginPage() {
             <input type="email" id="username_login" placeholder="Tài khoản" required/>
             <input type="password" id="password_login" placeholder="Mật khẩu" required/>
             <a href="#">Quên mật khẩu</a>
+<<<<<<< HEAD
             <button >Đăng nhập</button>
+=======
+            <button onclick="login()">Đăng nhập</button>
+>>>>>>> 01f00a12e750a3a6d9a00d7c60b5a0f903a2567f
         </div>
         <div class="overlay-container">
             <div class="overlay">
@@ -69,3 +73,24 @@ function showLoginPage() {
     }
 }
 showLoginPage();
+
+function login() {
+    let username = document.getElementById("username_login").value;
+    let password = document.getElementById("password_login").value;
+    let user = {
+        username : username,
+        password : password
+    }
+    axios.post(`http://localhost:8080/user/login`, user).then(function (response) {
+        let currentUser = response.data;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        showHome()
+    }).catch(function (error) {
+        console.log(error.response.data)
+    })
+}
+
+function logout() {
+    localStorage.clear();
+    showLoginPage();
+}
