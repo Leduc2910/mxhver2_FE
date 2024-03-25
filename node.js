@@ -14,7 +14,7 @@ app.use('/css', express.static(cssDirectoryPath));
 app.use('/javascript', express.static(jsDirectoryPath));
 
 app.get('/', (req, res) => {
-  const htmlPath = path.join(__dirname, 'index.html')
+  const htmlPath = path.join(__dirname,'index.html')
   res.sendFile(htmlPath)
 })
 
