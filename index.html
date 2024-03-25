@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phây búc</title>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="wrapper">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+        integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script type="text/javascript"  src="javascript/home/home.js"></script>
+<script type="text/javascript" src="javascript/user/login.js"></script>
+<script type="text/javascript" src="javascript/config/script.js"></script>
+<script type="text/javascript" src="javascript/config/firebase.js"></script>
+<script>
+		document.addEventListener('DOMContentLoaded', function () {
+		Validator({
+			form: '#form-1',
+			formGroupSelector: '.form-group',
+			errorSelector: '.form-message',
+			rules: [
+				Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+				Validator.isEmail('#email'),
+				Validator.minLength('#password', 6),
+			],
+			onSubmit: function (data) {
+				console.log(data);
+			}
+		});
+
+
+		Validator({
+		form: '#form-2',
+		formGroupSelector: '.form-group',
+		errorSelector: '.form-message',
+		rules: [
+		Validator.isEmail('#email'),
+		Validator.minLength('#password', 6),
+		],
+		onSubmit: function (data) {
+		console.log(data);
+	}
+	});
+	});
+</script>
+</body>
+</html>
