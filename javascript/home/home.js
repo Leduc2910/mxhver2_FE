@@ -1,5 +1,6 @@
 function showHome() {
-    let html = `<nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
+    let html = `<link rel="stylesheet" href="../../css/home.css">
+<nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
         <a href="index.html" class="navbar-brand"><img src="../element/img/brand-white.png" alt="logo" class="img-fluid" width="80px" height="100px"></a>
 
         <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
