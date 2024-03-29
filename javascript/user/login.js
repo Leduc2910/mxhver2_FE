@@ -49,8 +49,15 @@ function showLoginPage() {
 </div>`;
     document.getElementById('wrapper').innerHTML = html;
 }
-
-showLoginPage();
+function firstOpenWeb() {
+    let currentUser = localStorage.getItem("currentUser");
+    if (currentUser != null) {
+        showHome();
+    } else {
+        showLoginPage()
+    }
+}
+firstOpenWeb()
 
 function login() {
     let username = document.getElementById("username_login").value;
