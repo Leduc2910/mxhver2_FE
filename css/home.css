@@ -2,7 +2,7 @@
     box-sizing: border-box;
   }
 
-  body{
+.navbar navbar-expand-md navbar-dark mb-4{
       background-color: #F5F8FA;
       font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
       margin: 0;
