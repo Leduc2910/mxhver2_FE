@@ -270,9 +270,7 @@ function showHomeStatus() {
 <div class="col-12 col-lg-3">
     <div class="right-column">
         <div class="card shadow-sm mb-4" >
-            <div class="card-body" id="card-body">
-                <h6>User List</h6>
-            </div>
+            <div class="card-body" id="card-body"></div>
         </div>
         <div class="card shadow-sm mb-4">
             <div class="card-body">
@@ -301,7 +299,7 @@ function showHomeStatus() {
 function showUserList() {
     axios.get("http://localhost:8080/user").then(function (response) {
         let userList = response.data;
-        let html = "";
+        let html = "<h6>User List</h6>";
         for (let i = 0; i < userList.length; i++) {
             html += `
             <div>
