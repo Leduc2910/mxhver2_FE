@@ -270,11 +270,8 @@ function showHomeStatus() {
 <div class="col-12 col-lg-3">
     <div class="right-column">
         <div class="card shadow-sm mb-4" >
-            <div class="card-body">
-                <h6 class="card-title">Sponsored</h6>
-                <img src="../element/img/right1.jpg" alt="card-img" class="card-img mb-3">
-                <p class="card-text text-justify"> <span class="h6">It might be time to visit Iceland.</span> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice.  What are you waiting for?</p>
-                <a href="#" class="btn btn-outline-info card-link btn-sm">Buy a ticket</a>
+            <div class="card-body" id="card-body">
+                <h6>User List</h6>
             </div>
         </div>
         <div class="card shadow-sm mb-4">
@@ -297,5 +294,22 @@ function showHomeStatus() {
     </div>
             </div>`;
         document.getElementById("container").innerHTML = html;
+        showUserList()
     }))
+}
+
+function showUserList() {
+    axios.get("http://localhost:8080/user").then(function (response) {
+        let userList = response.data;
+        let html = "";
+        for (let i = 0; i < userList.length; i++) {
+            html += `
+            <div>
+                <img src="${userList[i].avatar}" alt="" width="50" height="50">
+                ${userList[i].fullname}
+            </div>
+            `
+        }
+        document.getElementById("card-body").innerHTML = html;
+    })
 }
