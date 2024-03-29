@@ -9,7 +9,7 @@ function showHome() {
         <div class="collapse navbar-collapse" id="responsive">
             <ul class="navbar-nav mr-auto text-capitalize">
                 <li class="nav-item"><a href="index.html" class="nav-link active">home</a></li>
-                <li class="nav-item"><a href="profile.html" class="nav-link">profile</a></li>
+                <li class="nav-item"><a onclick="showProfile()" class="nav-link">profile</a></li>
                 <li class="nav-item"><a href="#modalview" class="nav-link" data-toggle="modal">messages</a></li>
                 <li class="nav-item"><a href="notification.html" class="nav-link">docs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link d-md-none">growl</a></li>
