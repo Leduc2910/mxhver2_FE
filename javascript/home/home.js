@@ -158,6 +158,7 @@ function showHome() {
 function showHomeStatus() {
     let currentUser = localStorage.getItem("currentUser");
     axios.all([axios.get('http://localhost:8080/status')]).then(axios.spread((statusResponse) => {
+        let listStatus = statusResponse.data;
         let html = `        <div class="row">
             <!--------------------------left columns  start-->
             <div class="col-12 col-lg-3">
