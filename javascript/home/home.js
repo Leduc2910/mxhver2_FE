@@ -1,6 +1,6 @@
 function showHome() {
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    let html = `<link rel="stylesheet" href="../../css/home.css">
+    let html = `
 <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
         <a href="index.html" class="navbar-brand"><img src="../element/img/brand-white.png" alt="logo" class="img-fluid" width="80px" height="100px"></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
@@ -256,8 +256,8 @@ function showHomeStatus() {
                     <h6 class="card-title ">Bạn bè</h6>
                     <div class="row no-gutters d-none d-lg-flex">
                         <div class="col-6 p-1">
-                                <img src="../element/img/avatar-dhg.png" alt="img" width="80px" height="80px" class="rounded-circle mb-4">
-                                <img src="../element/img/avatar-fat.jpg" alt="img" width="80px" height="80px" class="rounded-circle">
+                                <img src="../../element/img/avatar-dhg.png" alt="img" width="80px" height="80px" class="rounded-circle mb-4">
+                                <img src="../../element/img/avatar-fat.jpg" alt="img" width="80px" height="80px" class="rounded-circle">
                         </div>
                         <div class="col-6 p-1 text-left">
                             <h6>Jacob Thornton @fat</h6>
