@@ -1,22 +1,20 @@
 function showHome() {
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let html = `<link rel="stylesheet" href="../../css/home.css">
 <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
         <a href="index.html" class="navbar-brand"><img src="../element/img/brand-white.png" alt="logo" class="img-fluid" width="80px" height="100px"></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="responsive">
             <ul class="navbar-nav mr-auto text-capitalize">
-                <li class="nav-item"><a onclick="showHomeStatus()" class="nav-link active">home</a></li>
-                <li class="nav-item"><a onclick="showProfile()" class="nav-link">profile</a></li>
-                <li class="nav-item"><a href="#modalview" class="nav-link" data-toggle="modal">messages</a></li>
-                <li class="nav-item"><a href="notification.html" class="nav-link">docs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link d-md-none">growl</a></li>
-                <li class="nav-item"><a href="#" class="nav-link d-md-none">logout</a></li>
+                <li class="nav-item"><a onclick="showHomeStatus()" class="nav-link active">Trang chủ</a></li>
+                <li class="nav-item"><a onclick="showProfile()" class="nav-link">Trang cá nhân</a></li>
+                <li class="nav-item"><a href="#modalview" class="nav-link" data-toggle="modal">Tin nhắn</a></li>
             </ul>
             <form action="" class="form-inline ml-auto d-none d-md-block">
-                <input type="text" name="search" id="search" placeholder="Search" class="form-control form-control-sm">
+                <input type="text" name="search" id="search" placeholder="Tìm kiếm..." class="form-control form-control-sm">
             </form>
             <a href="notification.html" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a> 
-            <img src="../element/img/avatar-dhg.png" alt="" class="rounded-circle ml-3 d-none d-md-block" width="32px" height="32px">
+            <img src="${currentUser.avatar}" alt="" class="rounded-circle ml-3 d-none d-md-block" width="32px" height="32px">
         </div>
     </nav>
     <!---------------------------------------------Ends navigation------------------------------>
@@ -156,8 +154,8 @@ function showHome() {
 }
 
 function showHomeStatus() {
-    let currentUser = localStorage.getItem("currentUser");
-    axios.all([axios.get('http://localhost:8080/status')]).then(axios.spread((statusResponse) => {
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    axios.all([axios.get('http://localhost:8080/status'), axios.get("http://localhost:8080/user")]).then(axios.spread((statusResponse) => {
         let listStatus = statusResponse.data;
         let html = `        <div class="row">
             <!--------------------------left columns  start-->
@@ -166,23 +164,22 @@ function showHomeStatus() {
                     <div class="card card-left1 mb-4" >
                         <img src="../element/img/photo-1455448972184-de647495d428.jpg" alt="" class="card-img-top img-fluid">
                         <div class="card-body text-center ">
-                            <img src="../element/img/avatar-dhg.png" alt="img" width="120px" height="120px" class="rounded-circle mt-n5">
-                            <h5 class="card-title">Dave Gamache</h5>
-                            <p class="card-text text-justify mb-2">I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.</p>
+                            <img src="${currentUser.avatar}" alt="img" width="120px" height="120px" class="rounded-circle mt-n5">
+                            <h5 class="card-title">${currentUser.fullname}</h5>
+                            <h5 class="card-title">${currentUser.username}</h5>
+                            <p class="card-text text-justify mb-2">${currentUser.description}</p>
                             <ul class="list-unstyled nav justify-content-center">
                                <a href="#" class="text-dark text-decoration-none"> <li class="nav-item">Friends <br> <strong>12M</strong></li></a>
-                              <a href="#" class="text-dark text-decoration-none"> <li class="nav-item">Enimes <br> <strong>1</strong></li></a> 
                             </ul>
                         </div>
                     </div>
                     <div class="card shadow-sm card-left2 mb-4">
                         <div class="card-body">
-                                <h5 class="mb-3 card-title">About <small><a href="#" class="ml-1">Edit</a></small></h5>
-                                <p class="card-text"> <i class="fas fa-calendar-week mr-2"></i> Went to <a href="#" class="text-decoration-none">oh canada</a></p>
-                                <p class="card-text"> <i class="fas fa-user-friends mr-2"></i> Become a friend with <a href="#" class="text-decoration-none">obama</a></p>
+                                <h5 class="mb-3 card-title">Giới thiệu</h5>
+                                <p class="card-text"> <i class="fas fa-calendar-week mr-2"></i>${currentUser.birthday}</p>
+                                <p class="card-text"> <i class="fa-solid fa-envelope"></i>${currentUser.email}</p>
                                 <p class="card-text"> <i class="far fa-building mr-2"></i> Work at <a href="#" class="text-decoration-none">Github</a></p>
-                                <p class="card-text"> <i class="fas fa-home mr-2"></i> Live in <a href="#" class="text-decoration-none">San francisco</a></p>
-                                <p class="card-text"> <i class="fas fa-map-marker mr-2"></i> From <a href="#" class="text-decoration-none">Seattle, WA</a></p>
+                                <p class="card-text"> <i class="fas fa-home mr-2"></i>${currentUser.address}</p>
                         </div>
                     </div>
                 </div>
@@ -204,13 +201,15 @@ function showHomeStatus() {
                                  </div>
                                 </div>
                             </form>
-                        </div>
-   <div class="card-body">
+                        </div>`
+        for (let i = 0; i < listStatus.length; i++) {
+            let diffTime = getTimeDiff(listStatus[i].createAt);
+            html += `<div class="card-body">
     <div class="media">
-        <img src="../element/img/avatar-dhg.png" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
+        <img src="${listStatus[i].user.avatar}" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
         <div class="media-body">
-            <h5>Dave Gamache</h5>
-            <p class="card-text text-justify">Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            <h5>${listStatus[i].user.username}</h5>
+            <p class="card-text text-justify">${listStatus[i].content}</p>
             <div class="row no-gutters mb-3">
                 <div class="col-6 p-1 text-center">
                         <img src="../element/img/adventure-alps-clouds-2259810.jpg" alt="" class="img-fluid mb-2">
@@ -234,35 +233,14 @@ function showHomeStatus() {
                     </div>
             </div>
         </div>
-        <small>5min</small>
+        <small>${diffTime}</small>
     </div>
    </div>           
- <hr>
-<div class="card-body">
-    <div class="media">
-            <img src="../element/img/avatar-fat.jpg" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
-        <div class="media-body">
-                <h5>Jacob Thornton</h5>
-                <p class="text-justify">Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                    Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <small>14 min</small>
-    </div>
-</div>
-<hr>
-<div class="card-body">
-    <div class="media">
-            <img src="../element/img/avatar-mdo.png" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
-            <div class="media-body">
-                <h5>Mark Otto</h5>
-                <p class="text-justify">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-             <a href="../element/img/mid5.jpg" data-lightbox="id"><img src="../element/img/mid5.jpg" alt="" class="img-fluid shadow-sm img-thumbnail">   </a>
+ <hr>`
+        }
 
-            </div>
-            <small class="text-muted">10 min</small>
-    </div>
-</div>
- </div>
+
+        html += `</div>
  </div>
   </div>
   <br> <br> <br><br> <br> <br>
@@ -271,16 +249,11 @@ function showHomeStatus() {
 <div class="col-12 col-lg-3">
     <div class="right-column">
         <div class="card shadow-sm mb-4" >
-            <div class="card-body">
-                <h6 class="card-title">Sponsored</h6>
-                <img src="../element/img/right1.jpg" alt="card-img" class="card-img mb-3">
-                <p class="card-text text-justify"> <span class="h6">It might be time to visit Iceland.</span> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice.  What are you waiting for?</p>
-                <a href="#" class="btn btn-outline-info card-link btn-sm">Buy a ticket</a>
-            </div>
+            <div class="card-body" id="suggest_friend"></div>
         </div>
         <div class="card shadow-sm mb-4">
             <div class="card-body">
-                    <h6 class="card-title ">Likes <a href="#" class="ml-1"><small>.View All</small> </a> </h6>
+                    <h6 class="card-title ">Bạn bè</h6>
                     <div class="row no-gutters d-none d-lg-flex">
                         <div class="col-6 p-1">
                                 <img src="../element/img/avatar-dhg.png" alt="img" width="80px" height="80px" class="rounded-circle mb-4">
@@ -298,5 +271,22 @@ function showHomeStatus() {
     </div>
             </div>`;
         document.getElementById("container").innerHTML = html;
+        showUserList()
     }))
+}
+
+function showUserList() {
+    axios.get("http://localhost:8080/user").then(function (response) {
+        let userList = response.data;
+        let html = "<h6>Gợi ý kết bạn</h6>";
+        for (let i = 0; i < userList.length; i++) {
+            html += `
+            <div>
+                <img src="${userList[i].avatar}" alt="" width="50" height="50">
+                <span>${userList[i].username}</span>
+            </div>
+            `
+        }
+        document.getElementById("suggest_friend").innerHTML = html;
+    })
 }
