@@ -8,3 +8,20 @@ function showFormLogin() {
     container.classList.remove("right-panel-active");
 }
 
+function getTimeDiff(createTime) {
+    let currentTime = new Date().getTime();
+    let postTime = new Date(createTime).getTime();
+    let diffTimeInSeconds = Math.floor((currentTime - postTime) / 1000);
+
+    if (diffTimeInSeconds >= 86400) {
+        return Math.floor(diffTimeInSeconds / 86400) + ' ngày';
+    } else if (diffTimeInSeconds >= 3600) {
+        return Math.floor(diffTimeInSeconds / 3600) + ' giờ';
+    } else if (diffTimeInSeconds >= 60) {
+        return Math.floor(diffTimeInSeconds / 60) + ' phút';
+    } else {
+        return diffTimeInSeconds + ' giây';
+    }
+}
+
+
