@@ -1,5 +1,7 @@
 function showLoginPage() {
-    let html = `<div class="container" id="container">
+    let html = ` <link rel="stylesheet" href="../../css/style.css">
+ <div class="login">
+<div class="container" id="container">
         <div class="form-container sign-up-container my-form">
             <div id="signup-form">
                 <h1>Tạo tài khoản</h1>
@@ -43,11 +45,19 @@ function showLoginPage() {
                 </div>
             </div>
         </div>
-    </div>`;
+    </div>
+</div>`;
     document.getElementById('wrapper').innerHTML = html;
 }
-
-showLoginPage();
+function firstOpenWeb() {
+    let currentUser = localStorage.getItem("currentUser");
+    if (currentUser != null) {
+        showHome();
+    } else {
+        showLoginPage()
+    }
+}
+firstOpenWeb()
 
 function login() {
     let username = document.getElementById("username_login").value;
