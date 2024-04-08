@@ -5,6 +5,7 @@ function showHome() {
             <div class="nav_logo">
                 <i class="fa-brands fa-facebook" style="color: #005eff;"></i>
             </div>
+            
             <div class="nav_search">
                 <div class="search_container">
                     <i class="fa-solid fa-magnifying-glass" style="color: #6e6e6e;"></i>
