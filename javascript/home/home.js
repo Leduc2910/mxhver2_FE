@@ -1,292 +1,46 @@
 function showHome() {
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    let html = `
-<nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
-        <a href="index.html" class="navbar-brand"><img src="../element/img/brand-white.png" alt="logo" class="img-fluid" width="80px" height="100px"></a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#responsive"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="responsive">
-            <ul class="navbar-nav mr-auto text-capitalize">
-                <li class="nav-item"><a onclick="showHomeStatus()" class="nav-link active">Trang chủ</a></li>
-                <li class="nav-item"><a onclick="showProfile()" class="nav-link">Trang cá nhân</a></li>
-                <li class="nav-item"><a href="#modalview" class="nav-link" data-toggle="modal">Tin nhắn</a></li>
-            </ul>
-            <form action="" class="form-inline ml-auto d-none d-md-block">
-                <input type="text" name="search" id="search" placeholder="Tìm kiếm..." class="form-control form-control-sm">
-            </form>
-            <a href="notification.html" class="text-decoration-none" style="color:#CBE4F2;font-size:22px;"><i class="far fa-bell ml-3 d-none d-md-block"></i></a> 
-            <img src="${currentUser.avatar}" alt="" class="rounded-circle ml-3 d-none d-md-block" width="32px" height="32px">
-        </div>
-    </nav>
-    <!---------------------------------------------Ends navigation------------------------------>
-    <!---------------------------MOdal Section  satrts------------------->
-
-    <div class="modal fade" id="modalview">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title h4">Messages</div>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <ul class="list-unstyled">
-                     <a href="#" class="text-decoration-none">
-                        <li class="media hover-media">
-                                <img src="../element/img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                                <div class="media-body text-dark">
-                                        <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                        <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                </div>
-                        </li>
-                    </a>
-                    <hr class="my-3">
-                    <a href="#" class="text-decoration-none">
-                            <li class="media hover-media">
-                                    <img src="../element/img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                                    <div class="media-body text-dark">
-                                            <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                            <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                    </div>
-                            </li>
-                        </a>
-                        <hr class="my-3">
-                        <a href="#" class="text-decoration-none">
-                            <li class="media hover-media">
-                               
-                                    <img src="../element/img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-    
-                                    <div class="media-body text-dark">
-                                            <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                            <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    
-                                    </div>
-    
-                            </li>
-                        </a>
-
-                        <hr class="my-3">
-
-
-                        <a href="#" class="text-decoration-none">
-                                <li class="media hover-media">
-                                   
-                                        <img src="../element/img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-        
-                                        <div class="media-body text-dark">
-                                                <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                                <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        
-                                        </div>
-        
-                                </li>
-                            </a>
-                            <hr class="my-3">
-        
-        
-                            
-                            <a href="#" class="text-decoration-none">
-                                    <li class="media hover-media">
-                                       
-                                            <img src="../element/img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-            
-                                            <div class="media-body text-dark">
-                                                    <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                                    <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            
-                                            </div>
-            
-                                    </li>
-                                </a>
-                                <hr class="my-3">
-                                <a href="#" class="text-decoration-none">
-                                    <li class="media hover-media">
-                                            <img src="../element/img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                                            <div class="media-body text-dark">
-                                                    <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                                    <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                            </div>
-                                    </li>
-                                </a>
-                                <hr class="my-3">
-                                <a href="#" class="text-decoration-none">
-                                        <li class="media hover-media">
-                                                <img src="../element/img/avatar-dhg.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                                                <div class="media-body text-dark">
-                                                        <h6 class="media-header">Jchob Thunder and <strong> 1 others</strong></h6>
-                                                        <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                
-                                                </div>
-                                        </li>
-                                    </a>
-                                    <hr class="my-3">
-                                    <a href="#" class="text-decoration-none">
-                                            <li class="media hover-media">
-                                                    <img src="../element/img/avatar-fat.jpg" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                                                    <div class="media-body text-dark">
-                                                            <h6 class="media-header">Mark Otto and <strong> 3 others</strong></h6>
-                                                            <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    
-                                                    </div>
-                                            </li>
-                                        </a>
-                                        <hr class="my-3">
-                                        <a href="#" class="text-decoration-none">
-                                            <li class="media hover-media">
-                                                    <img src="../element/img/avatar-mdo.png" alt="img" width="60px" height="60px" class="rounded-circle mr-3">
-                                                    <div class="media-body text-dark">
-                                                            <h6 class="media-header">Archer andu and <strong> 5 others</strong></h6>
-                                                            <p class="media-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                                    </div>
-                                            </li>
-                                        </a>
-                    </ul>
+    let html = `    <div class="navbar">
+        <div class="nav_left">
+            <div class="nav_logo">
+                <i class="fa-brands fa-facebook" style="color: #005eff;"></i>
+            </div>
+            <div class="nav_search">
+                <div class="search_container">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #6e6e6e;"></i>
+                    <input type="text" name="" id="" placeholder="Tìm kiếm trên Facebook">
                 </div>
             </div>
+        </div>
+        <div class="nav_middle">
+            <div class="nav_home">
+                <i class="fa-solid fa-house nav_item"></i>
+            </div>
+            <div class="nav_group">
+                <i class="fa-solid fa-user-group nav_item"></i>
+            </div>
+            <div class="nav_video">
+                <i class="fa-solid fa-film nav_item"></i>
+            </div>
+            <div class="nav_market">
+                <i class="fa-solid fa-shop nav_item"></i>
+            </div>
+
+        </div>
+        <div class="nav_right">
+            <div class="nav_menu nav_right_item"><i class="fa-solid fa-bars"></i></div>
+            <div class="nav_message nav_right_item"><i class="fa-brands fa-facebook-messenger"></i></div>
+            <div class="nav_noti nav_right_item"><i class="fa-solid fa-bell"></i></div>
+            <div class="nav_avatar nav_right_item"><img
+                    src="${currentUser.avatar}"
+                    alt=""></div>
         </div>
     </div>
-    <!-------------------------------MOdal Ends---------------------------->
-    <!-------------------------------------------Start Grids layout for lg-xl-3 columns and (xs-lg 1 columns)--------------------------------->
-    <div class="container" id="container">
-
-</div>
-`
-    showHomeStatus()
-    document.getElementById('wrapper').innerHTML = html;
-}
-
-function showHomeStatus() {
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    axios.all([axios.get('http://localhost:8080/status'), axios.get("http://localhost:8080/user")]).then(axios.spread((statusResponse) => {
-        let listStatus = statusResponse.data;
-        let html = `        <div class="row">
-            <!--------------------------left columns  start-->
-            <div class="col-12 col-lg-3">
-                <div class="left-column">
-                    <div class="card card-left1 mb-4" >
-                        <img src="../element/img/photo-1455448972184-de647495d428.jpg" alt="" class="card-img-top img-fluid">
-                        <div class="card-body text-center ">
-                            <img src="${currentUser.avatar}" alt="img" width="120px" height="120px" class="rounded-circle mt-n5">
-                            <h5 class="card-title">${currentUser.fullname}</h5>
-                            <h5 class="card-title">${currentUser.username}</h5>
-                            <p class="card-text text-justify mb-2">${currentUser.description}</p>
-                            <ul class="list-unstyled nav justify-content-center">
-                               <a href="#" class="text-dark text-decoration-none"> <li class="nav-item">Friends <br> <strong>12M</strong></li></a>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card shadow-sm card-left2 mb-4">
-                        <div class="card-body">
-                                <h5 class="mb-3 card-title">Giới thiệu</h5>
-                                <p class="card-text"> <i class="fas fa-calendar-week mr-2"></i>${currentUser.birthday}</p>
-                                <p class="card-text"> <i class="fa-solid fa-envelope"></i>${currentUser.email}</p>
-                                <p class="card-text"> <i class="far fa-building mr-2"></i> Work at <a href="#" class="text-decoration-none">Github</a></p>
-                                <p class="card-text"> <i class="fas fa-home mr-2"></i>${currentUser.address}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
- <!--------------------------Ends Left columns-->
- <!---------------------------------------Middle columns  start---------------->
-
-            <div class="col-12 col-lg-6" >
-                <div class="middle-column">
-                    <div class="card" >
-                        <div class="card-header bg-transparent">
-                            <form class="form-inline">
-                                <div class="input-group w-100">
-                                 <input type="text" name="message" id="message" placeholder="Message" class="form-control form-control-md">
-                                 <div class="input-group-append">
-                                        <div class="input-group-text">
-                                                <i class="fas fa-camera"></i>
-                                            </div>
-                                 </div>
-                                </div>
-                            </form>
-                        </div>`
-        for (let i = 0; i < listStatus.length; i++) {
-            let diffTime = getTimeDiff(listStatus[i].createAt);
-            html += `<div class="card-body">
-    <div class="media">
-        <img src="${listStatus[i].user.avatar}" alt="img" width="55px" height="55px" class="rounded-circle mr-3">
-        <div class="media-body">
-            <h5>${listStatus[i].user.username}</h5>
-            <p class="card-text text-justify">${listStatus[i].content}</p>
-            <div class="row no-gutters mb-3">
-                <div class="col-6 p-1 text-center">
-                        <img src="../element/img/adventure-alps-clouds-2259810.jpg" alt="" class="img-fluid mb-2">
-                        <img src="../element/img/aerial-view-architectural-design-buildings-2228123.jpg" alt="" class="img-fluid">
-                </div>
-                <div class="col-6 p-1 text-center">
-                        <img src="../element/img/celebration-colored-smoke-dark-2297472.jpg" alt="" class="img-fluid mb-2">
-                        <img src="../element/img/bodybuilding-exercise-fitness-2294361.jpg" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="media mb-3">
-                    <img src="../element/img/avatar-dhg.png" alt="img" width="45px" height="45px" class="rounded-circle mr-2">
-                    <div class="media-body">
-                            <p class="card-text text-justify">Jacon Thornton: Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.</p>
-                    </div>
-            </div>
-            <div class="media">
-                    <img src="../element/img/avatar-mdo.png" alt="img" width="45px" height="45px" class="rounded-circle mr-2">
-                    <div class="media-body">
-                            <p class="card-text text-justify">Mark Otto: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    </div>
-            </div>
-        </div>
-        <small>${diffTime}</small>
-    </div>
-   </div>           
- <hr>`
-        }
-
-
-        html += `</div>
- </div>
-  </div>
-  <br> <br> <br><br> <br> <br>
-<!------------------------Middle column Ends---------------->
-<!---------------------------Statrs Right Columns----------------->
-<div class="col-12 col-lg-3">
-    <div class="right-column">
-        <div class="card shadow-sm mb-4" >
-            <div class="card-body" id="suggest_friend"></div>
-        </div>
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                    <h6 class="card-title ">Bạn bè</h6>
-                    <div class="row no-gutters d-none d-lg-flex">
-                        <div class="col-6 p-1">
-                                <img src="../../element/img/avatar-dhg.png" alt="img" width="80px" height="80px" class="rounded-circle mb-4">
-                                <img src="../../element/img/avatar-fat.jpg" alt="img" width="80px" height="80px" class="rounded-circle">
-                        </div>
-                        <div class="col-6 p-1 text-left">
-                            <h6>Jacob Thornton @fat</h6>
-                            <a href="#" class="btn btn-outline-info btn-sm mb-3"><i class="fas fa-user-friends"></i>Follow </a>
-                            <h6>Mark otto</h6>
-                            <a href="#" class="btn btn-outline-info  btn-sm"><i class="fas fa-user-friends"></i>Follow </a>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-            </div>`;
-        document.getElementById("container").innerHTML = html;
-        showUserList()
-    }))
-}
-
-function showUserList() {
-    axios.get("http://localhost:8080/user").then(function (response) {
-        let userList = response.data;
-        let html = "<h6>Gợi ý kết bạn</h6>";
-        for (let i = 0; i < userList.length; i++) {
-            html += `
-            <div>
-                <img src="${userList[i].avatar}" alt="" width="50" height="50">
-                <span>${userList[i].username}</span>
-            </div>
-            `
-        }
-        document.getElementById("suggest_friend").innerHTML = html;
-    })
+    <div id="container">
+        <div class="container_shortcut"></div>
+        <div class="container_status" id="container_status"></div>
+        <div class="container_friend"></div>
+    </div>`
+    document.getElementById("wrapper").innerHTML = html;
+    showAllStatus()
 }
