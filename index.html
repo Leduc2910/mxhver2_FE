@@ -5,7 +5,8 @@
     <title>Phây búc</title>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
 <div id="wrapper">
@@ -18,36 +19,5 @@
 <script src="javascript/user/login.js"></script>
 <script src="javascript/config/script.js"></script>
 <script src="javascript/config/firebase.js"></script>
-<script>
-		document.addEventListener('DOMContentLoaded', function () {
-		Validator({
-			form: '#form-1',
-			formGroupSelector: '.form-group',
-			errorSelector: '.form-message',
-			rules: [
-				Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-				Validator.isEmail('#email'),
-				Validator.minLength('#password', 6),
-			],
-			onSubmit: function (data) {
-				console.log(data);
-			}
-		});
-
-
-		Validator({
-		form: '#form-2',
-		formGroupSelector: '.form-group',
-		errorSelector: '.form-message',
-		rules: [
-		Validator.isEmail('#email'),
-		Validator.minLength('#password', 6),
-		],
-		onSubmit: function (data) {
-		console.log(data);
-	}
-	});
-	});
-</script>
 </body>
 </html>
