@@ -1,7 +1,7 @@
 function showFormCreate() {
     document.getElementById('main').innerHTML = `
     <div>
-    <input type="text" id="userID" placeholder="Name">
+    <input type="text" id="userID" placeholder="UserId">
     <input type="text" id="content" placeholder="Content">
     <input type="text" id="statusID" placeholder="StatusID">
     <button onclick="create()">Comment</button>
