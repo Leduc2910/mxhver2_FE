@@ -1,6 +1,6 @@
 function showLoginPage() {
     let html = `<nav class="navbar">
-    <img class="logo" src="fb.png">
+    <img class="logo" src="../../pic/fb.png">
     <form class="login_form">
         <div class="email">
             <div class="font">Email or Phone</div>
@@ -16,7 +16,7 @@ function showLoginPage() {
 
 <section>
     <div class="logo_body">
-        <img class="logobdy" src="fbbdy.png">
+        <img class="logobdy" src="../../pic/fbbdy.png">
         <p class="like_font font1">Thanks for stopping by!</p>
         <p class="like_font">We hope to see you again soon.</p>
     </div>
