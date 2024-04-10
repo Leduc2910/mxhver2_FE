@@ -113,20 +113,23 @@ function commentDelete(id) {
     }
 }
 function addComment(idStatus) {
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let content = document.getElementById('editableParagraph').innerHTML;
-    let newComment = {
-        user: {
-            id:1   // để tạm có login thay bằng json
-        },
-        content: content,
-        status: {
-            id: idStatus,
-        },
-        createAt: new Date()
-    }
-    console.log(newComment)
-    axios.post('http://localhost:8080/comment', newComment).then(function (response) {
-    showAllStatus()
+    axios.get(`http://localhost:8080/status/${idStatus}`).then((response) => {
+        let status = response.data;
+        let newComment = {
+            user: {
+                id: currentUser.id
+            },
+            content: content
+        }
+        status.commentSet.push(newComment);
+        console.log(status)
+        axios.put(`http://localhost:8080/status/${idStatus}`, status).then(function (response) {
+            showAllStatus()
+        }).catch((e) => {
+            console.log(e)
+        })
     })
 }
 function likePost(statusID) {
@@ -155,15 +158,11 @@ function likePost(statusID) {
                 }
             }
             status.likedSet.push(newLike)
-            console.log(status)
-            axios.put(`http://localhost:8080/status/${status.id}`, status).then((response) => {
-                console.log(1)
+            axios.put(`http://localhost:8080/status/${status.id}`, status).then(function (response) {
+                document.getElementById(`totalLiked_${statusID}`).innerHTML = status.likedSet.length;
+                updateLikeButton(statusID, isLiked)
+
             })
-            // axios.put(`http://localhost:8080/status/${status.id}`, status).then(function (response) {
-            //     // document.getElementById(`totalLiked_${statusID}`).innerHTML = status.likedSet.length;
-            //     // updateLikeButton(statusID, isLiked)
-            //
-            // })
         }
     })
 }
