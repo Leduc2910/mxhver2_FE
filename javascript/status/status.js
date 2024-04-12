@@ -3,7 +3,11 @@ function showAllStatus() {
     axios.all([axios.get('http://localhost:8080/status'), axios.get('http://localhost:8080/comment')]).then(axios.spread((statusResponse, commentResponse) => {
         let listStatus = statusResponse.data;
         let listComment = commentResponse.data;
-        let html = '';
+        let html = `<div class="status_create">
+                <div class="create_avatar"><img src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Favatar-default.png?alt=media&token=5d1fe836-096e-45b8-a2ea-a2028072305c" alt=""></div>
+                <div class="create_input"><span>Minh Đức ơi, bạn đang nghĩ chóa gì thế?</span></div>
+                <div class="modal_create_status"></div>
+            </div>`;
         for (let i = 0; i < listStatus.length; i++) {
             let diffTimeStatus = getTimeDiff(listStatus[i].createAt);
             html += `<div class="status" id="status_${listStatus[i].id}">
@@ -18,7 +22,7 @@ function showAllStatus() {
                     </div>
                     <div class="status_option">
                         <i class="fa-solid fa-ellipsis" onclick="openModalOptionStatus(${listStatus[i].id})"></i>
-                        <div class="option_status" id="option_status" >
+                        <div class="option_status" id="option_status_${listStatus[i].id}" >
                             <div class="edit_status"><i class="fa-regular fa-pen-to-square"></i><span>Chỉnh sửa</span></div>
                             <div class="delete_status"><i class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
                         </div>

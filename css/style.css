@@ -10,6 +10,8 @@ body {
 #wrapper {
 }
 
+/*Login page*/
+
 /*navbar*/
 .navbar {
     padding: 0 20px;
@@ -126,6 +128,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     margin-top: 80px;
+    position: relative;
 }
 
 .container_shortcut {
@@ -138,6 +141,41 @@ body {
 .container_status {
     width: 680px;
     height: auto;
+}
+
+.status_create {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 20px 16px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.create_avatar {
+    margin-right: 8px;
+}
+
+.create_avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.create_input {
+    width: 100%;
+    background-color: #ececec;
+    border-radius: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+}
+
+.create_input span {
+    color: #65676B;
+    font-size: 19px;
 }
 
 .status {
@@ -181,6 +219,7 @@ body {
 .status_option {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .status_name span {
@@ -396,8 +435,8 @@ hr {
     background-color: white;
     display: flex;
     flex-direction: column;
-    top: 0;
-    right: 0;
+    top: 30px;
+    left: -130px;
     border-radius: 5px;
     box-shadow: 2px 2px 10px #bdbdbd;
     visibility: hidden;
@@ -406,18 +445,22 @@ hr {
 .edit_status, .delete_status {
     padding: 10px 20px;
 }
+
 .edit_status {
     border-bottom: 1px solid #c5c5c5;
 }
+
 .edit_status i, .delete_status i {
     margin-right: 15px;
     font-size: 17px;
 }
-.delete_status i, .delete_status span{
+
+.delete_status i, .delete_status span {
     width: 17px;
     height: 17px;
     color: red;
 }
+
 .option_status_open {
     visibility: visible;
 }
