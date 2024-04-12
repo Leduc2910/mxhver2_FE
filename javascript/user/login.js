@@ -12,6 +12,7 @@ function firstOpenApp() {
     } else {
         showHome();
     }
+
 }
 
 firstOpenApp();
