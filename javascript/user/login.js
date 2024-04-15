@@ -55,5 +55,8 @@ function register() {
     }
     axios.post(`http://localhost:8080/user`, user).then(function (response) {
         showLoginPage();
+    }).catch((e) => {
+        console.log(1)
+        console.log(e.response.data)
     })
 }

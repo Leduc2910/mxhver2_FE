@@ -20,7 +20,7 @@ function showAllStatus() {
                         <i class="fa-solid fa-ellipsis" onclick="openModalOptionStatus(${listStatus[i].id})"></i>
                         <div class="option_status" id="option_status" >
                             <div class="edit_status"><i class="fa-regular fa-pen-to-square"></i><span>Chỉnh sửa</span></div>
-                            <div class="delete_status"><i class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
+                            <div class="delete_status"><i class="fa-regular fa-trash-can"></i><button onclick="deleteStatus(${listStatus[i].id})">Xóa</button></div>
                         </div>
                     </div>
                 </div>
@@ -100,6 +100,17 @@ function showAllStatus() {
         }
         document.getElementById("container_status").innerHTML = html;
     }))
+}
+function deleteStatus(id){
+    let isCofirm = confirm("Bạn có muốn xóa bài viết này không?")
+    if (isCofirm) {
+        axios.delete(`http://localhost:8080/status/${id}`).then((response) => {
+            alert("Xóa thành công");
+            showAllStatus();
+        })
+    }else {
+        alert(" Rảnh à :))")
+    }
 }
 function commentDelete(id) {
     let isConfirm = confirm("Chắc chắn chứ?")
