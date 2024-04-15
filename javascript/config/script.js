@@ -15,17 +15,10 @@ function getTimeDiff(createTime) {
 }
 
 function openModalOptionStatus(statusID) {
-    let div_option = document.getElementById('option_status');
+    let div_option = document.getElementById(`option_status_${statusID}`);
     if (div_option.classList.contains("option_status_open")) {
         div_option.classList.remove("option_status_open");
     } else {
-        let statusElement = document.getElementById(`status_${statusID}`);
-        let rect = statusElement.getBoundingClientRect();
-        let top = rect.top + window.pageYOffset;
-        let left = rect.left + window.pageXOffset;
-
-        div_option.style.top = top + 'px';
-        div_option.style.left = left + 'px';
         div_option.classList.add("option_status_open");
     }
 }
