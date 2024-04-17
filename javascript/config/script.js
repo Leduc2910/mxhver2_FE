@@ -22,3 +22,11 @@ function openModalOptionStatus(statusID) {
         div_option.classList.add("option_status_open");
     }
 }
+function openModalCreateStatus() {
+    let modalCreate = document.getElementById("modal_create_status");
+    if (modalCreate.classList.contains("modal_create_status_open")) {
+        modalCreate.classList.remove("modal_create_status_open");
+    } else {
+        modalCreate.classList.add("modal_create_status_open");
+    }
+}

@@ -24,6 +24,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
 }
 
 .nav_left {
@@ -463,4 +464,167 @@ hr {
 
 .option_status_open {
     visibility: visible;
+}
+
+.modal_create_status {
+    width: 100%;
+    position: fixed;
+    background: rgb(0, 0, 0, 0.5);
+    top: 0;
+    right: 0;
+    height: 929px;
+    z-index: 2;
+    visibility: hidden;
+}
+.modal_create_status_open {
+    visibility: visible;
+}
+
+.form_create_status {
+    position: fixed;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.create_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #dadada;
+}
+
+.create_header span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.create_close {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #E6E4EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 15px;
+}
+
+.create_close i {
+    font-size: 19px;
+
+}
+
+.create_user {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 0;
+    margin: 0 16px;
+}
+
+.create_user_avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.create_user_avatar img {
+    width: 100%;
+    border-radius: 50%;
+    height: 100%;
+
+}
+
+.create_user_right {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create_user_username {
+    margin-top: -5px;
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.create_content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px 40px;
+    min-height: 152px;
+    width: 100%;
+
+}
+
+.create_status_input {
+    width: 100%;
+}
+
+.editable2 {
+    color: black;
+    cursor: text;
+    font-size: 19px;
+}
+
+.editable2[contenteditable]:empty::before {
+    content: "Bạn đang nghĩ gì thế?";
+    color: gray;
+    font-size: 20px;
+}
+
+.editable2:focus-visible {
+    outline: none;
+}
+
+.create_image {
+    max-width: 450px;
+    margin: 32px 20px 0;
+}
+
+.create_image img {
+    width: 100%;
+}
+
+.create_function {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    margin: 16px 16px;
+    border: 1px solid #929396;
+    height: 55px;
+    align-items: center;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+.create_function span {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 20px;
+}
+.create_function i {
+    font-size: 21px;
+}
+
+.create_post {
+    padding: 16px 16px 0;
+    margin: -4px;
+}
+.create_post button {
+    width: 100%;
+    height: 36px;
+    background-color: #0866ff;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
 }

@@ -3,10 +3,9 @@ function showAllStatus() {
     axios.all([axios.get('http://localhost:8080/status'), axios.get('http://localhost:8080/comment')]).then(axios.spread((statusResponse, commentResponse) => {
         let listStatus = statusResponse.data;
         let listComment = commentResponse.data;
-        let html = `<div class="status_create">
+        let html = `<div class="status_create" onclick="openModalCreateStatus()">
                 <div class="create_avatar"><img src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Favatar-default.png?alt=media&token=5d1fe836-096e-45b8-a2ea-a2028072305c" alt=""></div>
                 <div class="create_input"><span>Minh Đức ơi, bạn đang nghĩ chóa gì thế?</span></div>
-                <div class="modal_create_status"></div>
             </div>`;
         for (let i = 0; i < listStatus.length; i++) {
             let diffTimeStatus = getTimeDiff(listStatus[i].createAt);
