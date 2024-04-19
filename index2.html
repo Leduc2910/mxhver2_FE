@@ -10,161 +10,18 @@
 </head>
 <body>
 <div id="wrapper">
-    <div class="navbar">
-        <div class="nav_left">
-            <div class="nav_logo">
-                <i class="fa-brands fa-facebook" style="color: #005eff;"></i>
-            </div>
-            <div class="nav_search">
-                <div class="search_container">
-                    <i class="fa-solid fa-magnifying-glass" style="color: #6e6e6e;"></i>
-                    <input type="text" name="" id="" placeholder="Tìm kiếm trên Facebook">
-                </div>
-            </div>
+    <div class="contain_login">
+        <div class="login_logo">
+            <img src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Flogo_facebook.png?alt=media&token=8d5aa29a-89bc-4b37-8e72-39325f721684" alt="">
+            <span>Facebook helps you connect and share with the people in your life.</span>
         </div>
-        <div class="nav_middle">
-            <div class="nav_home">
-                <i class="fa-solid fa-house nav_item"></i>
-            </div>
-            <div class="nav_group">
-                <i class="fa-solid fa-user-group nav_item"></i>
-            </div>
-            <div class="nav_video">
-                <i class="fa-solid fa-film nav_item"></i>
-            </div>
-            <div class="nav_market">
-                <i class="fa-solid fa-shop nav_item"></i>
-            </div>
-
-        </div>
-        <div class="nav_right">
-            <div class="nav_menu nav_right_item"><i class="fa-solid fa-bars"></i></div>
-            <div class="nav_message nav_right_item"><i class="fa-brands fa-facebook-messenger"></i></div>
-            <div class="nav_noti nav_right_item"><i class="fa-solid fa-bell"></i></div>
-            <div class="nav_avatar nav_right_item"><img
-                    src="${currentUser.avatar}"
-                    alt=""></div>
-        </div>
+        <div class="form_login"></div>
     </div>
-    <div id="container">
-        <div class="container_shortcut"></div>
-        <div class="container_status" id="container_status">
-            <div class="status_create">
-                <div class="create_avatar"><img
-                        src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Favatar-default.png?alt=media&token=5d1fe836-096e-45b8-a2ea-a2028072305c"
-                        alt=""></div>
-                <div class="create_input"><span>Minh Đức ơi, bạn đang nghĩ chóa gì thế?</span></div>
-                <div class="modal_create_status">
-                    <div class="form_create_status">
-                        <div class="create_header"><span>Tạo bài viết</span>
-                        <div class="create_close"><i class="fa-solid fa-x"></i></div></div>
-                        <div class="create_user">
-                            <div class="create_user_avatar"><img src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Favatar-default.png?alt=media&token=5d1fe836-096e-45b8-a2ea-a2028072305c" alt=""></div>
-                            <div class="create_user_right">
-                                <div class="create_user_username"><span>Le Minh Duc</span></div>
-                                <div class="create_user_author">
-                                    <select name="" id="">
-                                        <option value="">Công khai</option>
-                                        <option value="">Bạn bè</option>
-                                        <option value="">Riêng tư</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="create_content"><div class="create_status_input"><p id="createContent" class="editable2"
-                                                                                 contentEditable="true"></p></div>
-                        <div class="create_image"><img src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Favatar-default.png?alt=media&token=5d1fe836-096e-45b8-a2ea-a2028072305c" alt=""></div>
-
-                        <div class="create_function">
-                            <span>Thêm vào bài viết của bạn</span>
-                            <i class="fa-regular fa-images" style="color: #7fbb20"></i>
-                        </div>
-                        <div class="create_post">
-                            <button>Đăng</button></div>
-                    </div>
-                </div>
-            </div>
-            <div class="status">
-                <div class="status_header">
-                    <div class="status_avatar"><img src="${listStatus[i].user.avatar}" alt=""></div>
-                    <div class="status_info">
-                        <div class="status_name"><span>${listStatus[i].user.username}</span>
-                        </div>
-                        <div class="status_time">
-                            <span>${diffTimeStatus}</span>
-                        </div>
-                    </div>
-                    <div class="status_option">
-                        <i class="fa-solid fa-ellipsis"></i>
-                        <div class="option_status">
-                            <div class="edit_status"><i class="fa-regular fa-pen-to-square"></i><span>Chỉnh sửa</span>
-                            </div>
-                            <div class="delete_status"><i class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="status_content">
-                    <div class="content"><span>${listStatus[i].content}</span></div>
-                    <div class="content_img">
-                        <img src="${listStatus[i].usedImageSet[0].source}" alt="">
-                    </div>
-                </div>
-                <div class="status_bottom">
-                    <div class="status_detail">
-                        <div class="count_like"><span id="totalLiked_${listStatus[i].id}">${listStatus[i].likedSet.length}</span><span> lượt thích</span>
-                        </div>
-                        <div class="comment_share">
-                            <div class="count_comment">
-                                <span>${listStatus[i].commentSet.length}</span><span> bình luận</span></div>
-                            <div class="count_share"><span>0 lượt chia sẻ</span></div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="status_function">
-                        <div class="function_like" id="liked_${listStatus[i].id}"
-                             onclick="likePost(${listStatus[i].id})"><i class="fa-regular fa-thumbs-up"
-                                                                        style="color: dodgerblue"></i><span
-                                style="color: dodgerblue">Thích</span></div>
-                        <div class="function_comment"><i class="fa-regular fa-comment"></i><span>Bình luận</span></div>
-                        <div class="function_share"><i class="fa-solid fa-share"></i><span>Chia sẻ</span></div>
-                    </div>
-                    <hr>
-                </div>
-                <div class="contain_comment">
-                    <div class="comment">
-                        <div class="comment_avatar">
-                            <img src="${listStatus[i].commentSet[j].user.avatar}" alt="">
-                        </div>
-                        <div class="comment_right">
-                            <div class="comment_top">
-                                <div class="comment_name">${listStatus[i].commentSet[j].user.username}</div>
-                                <div class="comment_content">${listStatus[i].commentSet[j].content}</div>
-                            </div>
-                            <div class="comment_bottom">
-                                <div class="comment_createAt">
-                                    ${diffTimeComment}
-                                </div>
-                                <div class="comment_like"><span>Thích</span></div>
-                                <div class="comment_reply"><span>Phản hồi</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="create_comment">
-                    <div class="comment_avatar"><img src="${currentUser.avatar}" alt=""></div>
-                    <div class="comment_input">
-                        <div class="cmt_create_input"><p id="editableParagraph" class="editable"
-                                                         contentEditable="true"></p></div>
-                        <div class="cmt_create_img"><i class="fa-regular fa-image"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container_friend"></div>
-    </div>
-    </div></div>
+    <div class="footer_login"></div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
         integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
+
