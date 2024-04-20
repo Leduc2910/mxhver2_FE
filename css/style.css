@@ -1,17 +1,279 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
 }
 
 body {
     background-color: #f0f2f5;
 }
-
+input:focus-visible {
+    outline: none;
+}
 #wrapper {
 }
 
 /*Login page*/
+.contain_login {
+    display: flex;
+    flex-direction: row;
+    padding: 180px 0 250px;
+    margin: 0 463px;
+}
+.login_logo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+}
+.login_logo img {
+    width: 35%;
+}
+.login_logo span {
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.form_login {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px 24px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #bdbdbd;
 
+}
+.form_login input {
+    width: 364px;
+    height: 52px;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid #ceced2;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.form_login input:focus-visible {
+    border: 1px solid blue;
+    outline: none;
+    box-shadow: 1px 1px 10px #bdbdbd;
+}
+.login_button {
+    width: 364px;
+    height: 48px;
+    background-color: #0866ff;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.forgot_password {
+color: #0866ff;
+    margin-bottom: 15px;
+}
+.form_login hr {
+    width: 364px;
+    border: none;
+    border-bottom: 1px solid #E6E4EB;
+    margin-bottom: 15px;
+}
+.regis_button {
+    width: 180px;
+    height: 48px;
+    border: none;
+    background-color: #42B72A;
+    border-radius: 5px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+}
+.footer_login {
+    background-color: white;
+    height: 165px;
+}
+.footer_content {
+    margin: 0 464px;
+    height: 70%;
+    display: flex;
+    align-items: flex-end;
+    color: #8A8D91;
+    font-size: 12px;
+}
+.modal_register {
+    position: fixed;
+    background: rgb(255, 255, 255, 0.7);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    visibility: hidden;
+}
+.open_modal_register {
+    visibility: visible;
+}
+.form_register {
+    position: fixed;
+    width: 432px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 1px 3px 7px #a6a6a8;
+}
+.register_header {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 16px;
+    border-bottom: 1px solid #E6E4EB;
+    position: relative;
+}
+.regis_header1 {
+    font-size: 32px;
+    font-weight: 600;
+}
+.regis_header2 {
+    font-size: 16px;
+    color: #606770;
+}
+.register_header i {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 24px;
+    color: #606771;
+}
+.regis_main {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-top:1px;
+}
+.regis_name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    margin-bottom: 10px;
+
+}
+.regis_name input {
+    width: 194px;
+    height: 40px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+.regis_email {
+    margin-bottom: 10px;
+}
+.regis_email input {
+    width: 100%;
+    height: 40px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+.regis_confirmemail {
+    margin-bottom: 10px;
+}
+.regis_confirmemail input {
+    width: 100%;
+    height: 40px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+.regis_password {
+    margin-bottom: 10px;
+}
+.regis_password input {
+    width: 100%;
+    height: 40px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+.regis_birthday {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.regis_birthday label {
+    font-size: 12px;
+    color: #606770;
+    margin-bottom: 5px;
+}
+.regis_birthdayinput {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.regis_birthdayinput input {
+    width: 125px;
+    height: 36px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+.regis_gender {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.regis_gender label {
+    font-size: 12px;
+    color: #606770;
+    margin-bottom: 5px;
+}
+.regis_genderinput {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.genderinput_male, .genderinput_female {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    width: 105px;
+    height: 36px;
+    border: 1px solid #bdc7d8;
+}
+.genderinput_male {
+    margin-right: 20px;
+}
+.regis_rule {
+    font-size: 11px;
+    color: #777777;
+}
+.regis_confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.regis_confirm button {
+    width: 194px;
+    height: 36px;
+    border: none;
+    background-color: #42B72A;
+    border-radius: 5px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+ }
 /*navbar*/
 .navbar {
     padding: 0 20px;

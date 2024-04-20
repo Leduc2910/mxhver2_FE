@@ -12,12 +12,62 @@
 <div id="wrapper">
     <div class="contain_login">
         <div class="login_logo">
-            <img src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Flogo_facebook.png?alt=media&token=8d5aa29a-89bc-4b37-8e72-39325f721684" alt="">
-            <span>Facebook helps you connect and share with the people in your life.</span>
+            <img src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Flogo_facebook.png?alt=media&token=8d5aa29a-89bc-4b37-8e72-39325f721684"
+                 alt="">
+            <span>Facebook giúp bạn kết nối và chia sẻ<br>với mọi người trong cuộc sống của bạn.</span>
         </div>
-        <div class="form_login"></div>
+        <div class="form_login">
+            <input type="text" placeholder="Email hoặc số điện thoại">
+            <input type="text" placeholder="Mật khẩu">
+            <button class="login_button">Đăng nhập</button>
+            <span class="forgot_password">Quên mật khẩu?</span>
+            <hr>
+            <button class="regis_button">Tạo tài khoản mới</button>
+        </div>
     </div>
-    <div class="footer_login"></div>
+    <div class="modal_register">
+        <div class="form_register">
+            <div class="register_header"><span class="regis_header1">Đăng ký</span>
+                <span class="regis_header2">Nhanh chóng và dễ dàng</span>
+                <i class="fa-solid fa-xmark"></i></div>
+            <div class="regis_main">
+                <div class="regis_name">
+                    <input type="text" name="firstname" id="" placeholder="Họ">
+                    <input type="text" name="lastname" id="" placeholder="Tên">
+                </div>
+                <div class="regis_email"><input type="text" name="" id="" placeholder="Email"></div>
+                <div class="regis_confirmemail"><input type="text" name="" id="" placeholder="Nhập lại email"></div>
+                <div class="regis_password"><input type="text" name="" id="" placeholder="Mật khẩu"></div>
+                <div class="regis_birthday">
+                    <label>Ngày sinh <i class="fa-solid fa-circle-question"></i></label>
+                    <div class="regis_birthdayinput"><input type="text" name="" id="" placeholder="Ngày">
+                        <input type="text" name="" id="" placeholder="Tháng">
+                        <input type="text" name="" id="" placeholder="Năm"></div>
+                </div>
+                <div class="regis_gender">
+                    <label>Giới tính <i class="fa-solid fa-circle-question"></i></label>
+                    <div class="regis_genderinput">
+                        <div class="genderinput_male">
+                            Nam<input type="radio" name="gender" id="" value="0">
+                        </div>
+                        <div class="genderinput_female">
+                            Nữ<input type="radio" name="gender" id="" value="1">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="regis_rule"><span>Những người dùng dịch vụ của chúng tôi có thể đã tải thông tin liên hệ của bạn lên Facebook. Tìm hiểu thêm.<br><br>
+
+Bằng cách nhấp vào Đăng ký, bạn đồng ý với Điều khoản, Chính sách quyền riêng tư và Chính sách cookie của chúng tôi. Bạn có thể nhận được thông báo của chúng tôi qua SMS và hủy nhận bất kỳ lúc nào.
+
+</span></div>
+                <div class="regis_confirm">
+                    <button>Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer_login"><div class="footer_content"><span>Meta © 2024</span></div></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
         integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
