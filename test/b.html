@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin người dùng</title>
+</head>
+<body>
+
+<div id="userDetails">
+    <h2>Thông tin người dùng</h2>
+    <p id="username"></p>
+    <p id="email"></p>
+    <!-- Thêm các trường thông tin khác tương tự ở đây -->
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Lấy dữ liệu từ localStorage
+    let currentUserJSON = localStorage.getItem("currentUser");
+    if (currentUserJSON) {
+      let currentUser = JSON.parse(currentUserJSON);
+      console.log(currentUser)
+      // Hiển thị thông tin người dùng trong HTML
+      document.getElementById("username").textContent = "Tên đăng nhập: " + currentUser.username;
+      document.getElementById("email").textContent = "Email: " + currentUser.email;
+      // Thêm các dòng tương tự cho các trường thông tin khác
+
+    } else {
+      document.getElementById("userDetails").innerHTML = "<p>Không tìm thấy thông tin người dùng trong localStorage.</p>";
+    }
+  });
+</script>
+
+</body>
+</html>
