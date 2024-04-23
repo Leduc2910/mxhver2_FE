@@ -1,3 +1,4 @@
+
 function showHome() {
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let html = `    <div class="navbar">
