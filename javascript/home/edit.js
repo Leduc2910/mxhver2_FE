@@ -236,7 +236,6 @@ function getData() {
     const avatarElement = document.getElementById('avatar');
     const descriptionElement = document.getElementById('description');
 
-    // Set the text content of the elements to the fetched data
     fullnameElement.textContent = fullname;
     birthdayElement.textContent = birthday;
     genderElement.textContent = gender === 0 ? 'Male' : 'Female';
