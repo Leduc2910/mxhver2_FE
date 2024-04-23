@@ -33,9 +33,12 @@ function showHome() {
             <div class="nav_menu nav_right_item"><i class="fa-solid fa-bars"></i></div>
             <div class="nav_message nav_right_item"><i class="fa-brands fa-facebook-messenger"></i></div>
             <div class="nav_noti nav_right_item"><i class="fa-solid fa-bell"></i></div>
-            <div class="nav_avatar nav_right_item"><img
+            <div class="nav_avatar nav_right_item">
+            <button class="round-button"  onclick="showEditPage()"><img
                     src="${currentUser.avatar}"
-                    alt=""></div>
+                    alt="">
+            </button>
+                    </div>
         </div>
     </div>
     <div id="container">

@@ -222,6 +222,7 @@ Friends
 </section>
 <!--end info trang cá nhân-->
   `
+  document.getElementById("wrapper").innerHTML = html;
 }
 function getData() {
   axios.get('http://localhost:8080/user/2')

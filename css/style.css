@@ -1617,3 +1617,14 @@ hr {
 .bio-btn-click {
     display: none;
 }
+.round-button {
+    width: 50px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.round-button img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
