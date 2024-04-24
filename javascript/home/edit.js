@@ -223,6 +223,7 @@ Friends
 <!--end info trang cá nhân-->
   `
   document.getElementById("wrapper").innerHTML = html;
+  getData()
 }
 function getData() {
   axios.get('http://localhost:8080/user/2')
@@ -235,15 +236,15 @@ function getData() {
     const genderElement = document.getElementById('gender');
     const avatarElement = document.getElementById('avatar');
     const descriptionElement = document.getElementById('description');
-
-    fullnameElement.textContent = fullname;
-    birthdayElement.textContent = birthday;
-    genderElement.textContent = gender === 0 ? 'Male' : 'Female';
-    descriptionElement.textContent = description
+    console.log(typeof response.data.fullname);
+    console.log(fullnameElement);
+    fullnameElement.innerHTML = fullname;
+    birthdayElement.innerHTML = birthday;
+    genderElement.innerHTML = gender === 0 ? 'Male' : 'Female';
+    descriptionElement.innerHTML = description
     avatarElement.src = avatar;
   })
   .catch(error => {
     console.error('Error fetching data:', error);
   });
 }
-window.onload = getData;
