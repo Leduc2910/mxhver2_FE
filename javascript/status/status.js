@@ -23,7 +23,7 @@ function showAllStatus() {
                         <i class="fa-solid fa-ellipsis" onclick="openModalOptionStatus(${listStatus[i].id})"></i>
                         <div class="option_status" id="option_status_${listStatus[i].id}" >
                             <div class="edit_status"><i class="fa-regular fa-pen-to-square"></i><span>Chỉnh sửa</span></div>
-                            <div class="delete_status"><i class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
+                            <div class="delete_status" onclick="openModalDeleteStatus(${listStatus[i].id})"><i class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
                         </div>
                     </div>
                 </div>
@@ -175,4 +175,50 @@ function updateLikeButton(statusID, isLiked) {
     if (div) {
         div.innerHTML = !isLiked ? '<i class="fa-regular fa-thumbs-up" style="color: dodgerblue"></i><span style="color: dodgerblue">Thích</span>' : '<i class="fa-regular fa-thumbs-up"></i><span>Thích</span>';
     }
+}
+function postStatus() {
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    let content  = document.getElementById("createContent").innerHTML;
+    let srcImage = null;
+    if (document.getElementById('create_img') != null) {
+        srcImage = document.getElementById('create_img').src;
+    }
+    let status;
+    if (content.trim() !== '') {
+        if (srcImage !== null) {
+            status = {
+                user: {
+                    id: currentUser.id
+                }, content: content, usedImageSet: [{
+                    source: srcImage
+                }]
+            }
+        } else {
+            status = {
+                user: {
+                    id: currentUser.id
+                }, content: content
+            }
+        }
+    } else if (srcImage != null) {
+        status = {
+            user: {
+                id: currentUser.id
+            }, content: content, usedImageSet: [{
+                source: srcImage
+            }]
+        }
+
+    }
+    axios.post('http://localhost:8080/status',status).then((response) => {
+        showAllStatus()
+        openModalCreateStatus()
+    })
+}
+function deleteStatus() {
+    let statusID = +(document.getElementById("remove_status").value);
+    axios.delete(`http://localhost:8080/status/${statusID}`).then((response) => {
+        openModalDeleteStatus();
+        showAllStatus();
+    })
 }
