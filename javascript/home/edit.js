@@ -226,7 +226,9 @@ Friends
   getData()
 }
 function getData() {
-  axios.get('http://localhost:8080/user/2')
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  let idUser = currentUser.id
+  axios.get(`http://localhost:8080/user/${idUser}`)
   .then(response => {
 
     const { username, email, fullname, birthday, gender, avatar, description } = response.data;
@@ -236,8 +238,6 @@ function getData() {
     const genderElement = document.getElementById('gender');
     const avatarElement = document.getElementById('avatar');
     const descriptionElement = document.getElementById('description');
-    console.log(typeof response.data.fullname);
-    console.log(fullnameElement);
     fullnameElement.innerHTML = fullname;
     birthdayElement.innerHTML = birthday;
     genderElement.innerHTML = gender === 0 ? 'Male' : 'Female';
