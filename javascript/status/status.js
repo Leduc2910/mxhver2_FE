@@ -174,3 +174,10 @@ function updateLikeButton(statusID, isLiked) {
         div.innerHTML = !isLiked ? '<i class="fa-regular fa-thumbs-up" style="color: dodgerblue"></i><span style="color: dodgerblue">Thích</span>' : '<i class="fa-regular fa-thumbs-up"></i><span>Thích</span>';
     }
 }
+
+function remove(id) {
+    let confirm = confirm("Có muốn xoá không ?");
+    if (confirm) {
+        axios.delete(`http://localhost:8080/status/${id}`)
+    }
+}
