@@ -3,7 +3,7 @@ function showHome() {
     let html = `    <div class="navbar">
         <div class="nav_left">
             <div class="nav_logo">
-                <i class="fa-brands fa-facebook" style="color: #005eff;"></i>
+                <i class="fa-brands fa-facebook" style="color: #005eff;" onclick="showHome()"></i>
             </div>
             <div class="nav_search">
                 <div class="search_container">

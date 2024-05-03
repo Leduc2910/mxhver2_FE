@@ -1313,4 +1313,5 @@ hr {
     width: 680px;
     display: flex;
     flex-direction: column;
+    height: auto;
 }
