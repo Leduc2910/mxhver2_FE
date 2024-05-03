@@ -3,7 +3,10 @@ function showAllStatus() {
     axios.all([axios.get('http://localhost:8080/status'), axios.get('http://localhost:8080/comment')]).then(axios.spread((statusResponse, commentResponse) => {
         let listStatus = statusResponse.data;
         let listComment = commentResponse.data;
-        let html = '';
+        let html = `<div class="status_create" onclick="openModalCreateStatus()">
+                <div class="create_avatar"><img src="${currentUser.avatar}" alt=""></div>
+                <div class="create_input"><span>${currentUser.fullname} ơi, bạn đang nghĩ gì thế?</span></div>
+            </div>`;
         for (let i = 0; i < listStatus.length; i++) {
             let diffTimeStatus = getTimeDiff(listStatus[i].createAt);
             html += `<div class="status" id="status_${listStatus[i].id}">
@@ -18,9 +21,9 @@ function showAllStatus() {
                     </div>
                     <div class="status_option">
                         <i class="fa-solid fa-ellipsis" onclick="openModalOptionStatus(${listStatus[i].id})"></i>
-                        <div class="option_status" id="option_status" >
+                        <div class="option_status" id="option_status_${listStatus[i].id}" >
                             <div class="edit_status"><i class="fa-regular fa-pen-to-square"></i><span>Chỉnh sửa</span></div>
-                            <div class="delete_status"><i class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
+                            <div class="delete_status" onclick="openModalDeleteStatus(${listStatus[i].id})"><i class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
                         </div>
                     </div>
                 </div>
@@ -113,20 +116,23 @@ function commentDelete(id) {
     }
 }
 function addComment(idStatus) {
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let content = document.getElementById('editableParagraph').innerHTML;
-    let newComment = {
-        user: {
-            id:1   // để tạm có login thay bằng json
-        },
-        content: content,
-        status: {
-            id: idStatus,
-        },
-        createAt: new Date()
-    }
-    console.log(newComment)
-    axios.post('http://localhost:8080/comment', newComment).then(function (response) {
-    showAllStatus()
+    axios.get(`http://localhost:8080/status/${idStatus}`).then((response) => {
+        let status = response.data;
+        let newComment = {
+            user: {
+                id: currentUser.id
+            },
+            content: content
+        }
+        status.commentSet.push(newComment);
+        console.log(status)
+        axios.put(`http://localhost:8080/status/${idStatus}`, status).then(function (response) {
+            showAllStatus()
+        }).catch((e) => {
+            console.log(e)
+        })
     })
 }
 function likePost(statusID) {
@@ -155,15 +161,11 @@ function likePost(statusID) {
                 }
             }
             status.likedSet.push(newLike)
-            console.log(status)
-            axios.put(`http://localhost:8080/status/${status.id}`, status).then((response) => {
-                console.log(1)
+            axios.put(`http://localhost:8080/status/${status.id}`, status).then(function (response) {
+                document.getElementById(`totalLiked_${statusID}`).innerHTML = status.likedSet.length;
+                updateLikeButton(statusID, isLiked)
+
             })
-            // axios.put(`http://localhost:8080/status/${status.id}`, status).then(function (response) {
-            //     // document.getElementById(`totalLiked_${statusID}`).innerHTML = status.likedSet.length;
-            //     // updateLikeButton(statusID, isLiked)
-            //
-            // })
         }
     })
 }
@@ -174,10 +176,49 @@ function updateLikeButton(statusID, isLiked) {
         div.innerHTML = !isLiked ? '<i class="fa-regular fa-thumbs-up" style="color: dodgerblue"></i><span style="color: dodgerblue">Thích</span>' : '<i class="fa-regular fa-thumbs-up"></i><span>Thích</span>';
     }
 }
-
-function remove(id) {
-    let confirm = confirm("Có muốn xoá không ?");
-    if (confirm) {
-        axios.delete(`http://localhost:8080/status/${id}`)
+function postStatus() {
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    let content  = document.getElementById("createContent").innerHTML;
+    let srcImage = null;
+    if (document.getElementById('create_img') != null) {
+        srcImage = document.getElementById('create_img').src;
     }
+    let status;
+    if (content.trim() !== '') {
+        if (srcImage !== null) {
+            status = {
+                user: {
+                    id: currentUser.id
+                }, content: content, usedImageSet: [{
+                    source: srcImage
+                }]
+            }
+        } else {
+            status = {
+                user: {
+                    id: currentUser.id
+                }, content: content
+            }
+        }
+    } else if (srcImage != null) {
+        status = {
+            user: {
+                id: currentUser.id
+            }, content: content, usedImageSet: [{
+                source: srcImage
+            }]
+        }
+
+    }
+    axios.post('http://localhost:8080/status',status).then((response) => {
+        showAllStatus()
+        openModalCreateStatus()
+    })
+}
+function deleteStatus() {
+    let statusID = +(document.getElementById("remove_status").value);
+    axios.delete(`http://localhost:8080/status/${statusID}`).then((response) => {
+        openModalDeleteStatus();
+        showAllStatus();
+    })
 }

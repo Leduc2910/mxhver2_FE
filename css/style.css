@@ -1,13 +1,320 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
 }
 
 body {
     background-color: #f0f2f5;
 }
 
+input:focus-visible {
+    outline: none;
+}
+
 #wrapper {
+}
+
+/*Login page*/
+.contain_login {
+    display: flex;
+    flex-direction: row;
+    padding: 180px 0 250px;
+    margin: 0 463px;
+}
+
+.login_logo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+}
+
+.login_logo img {
+    width: 35%;
+}
+
+.login_logo span {
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.form_login {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px 24px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #bdbdbd;
+
+}
+
+.form_login input {
+    width: 364px;
+    height: 52px;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid #ceced2;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.form_login input:focus-visible {
+    border: 1px solid blue;
+    outline: none;
+    box-shadow: 1px 1px 10px #bdbdbd;
+}
+
+.login_button {
+    width: 364px;
+    height: 48px;
+    background-color: #0866ff;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.forgot_password {
+    color: #0866ff;
+    margin-bottom: 15px;
+}
+
+.form_login hr {
+    width: 364px;
+    border: none;
+    border-bottom: 1px solid #E6E4EB;
+    margin-bottom: 15px;
+}
+
+.regis_button {
+    width: 180px;
+    height: 48px;
+    border: none;
+    background-color: #42B72A;
+    border-radius: 5px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.footer_login {
+    background-color: white;
+    height: 165px;
+}
+
+.footer_content {
+    margin: 0 464px;
+    height: 70%;
+    display: flex;
+    align-items: flex-end;
+    color: #8A8D91;
+    font-size: 12px;
+}
+
+.modal_register {
+    position: fixed;
+    background: rgb(255, 255, 255, 0.7);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    visibility: hidden;
+}
+
+.open_modal_register {
+    visibility: visible;
+}
+
+.form_register {
+    position: fixed;
+    width: 432px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 1px 3px 7px #a6a6a8;
+}
+
+.register_header {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 16px;
+    border-bottom: 1px solid #E6E4EB;
+    position: relative;
+}
+
+.regis_header1 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.regis_header2 {
+    font-size: 16px;
+    color: #606770;
+}
+
+.register_header i {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 24px;
+    color: #606771;
+}
+
+.regis_main {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1px;
+}
+
+.regis_name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    margin-bottom: 10px;
+
+}
+
+.regis_name input {
+    width: 194px;
+    height: 40px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+
+.regis_email {
+    margin-bottom: 10px;
+}
+
+.regis_email input {
+    width: 100%;
+    height: 40px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+
+.regis_confirmemail {
+    margin-bottom: 10px;
+}
+
+.regis_confirmemail input {
+    width: 100%;
+    height: 40px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+
+.regis_password {
+    margin-bottom: 10px;
+}
+
+.regis_password input {
+    width: 100%;
+    height: 40px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+
+.regis_birthday {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.regis_birthday label {
+    font-size: 12px;
+    color: #606770;
+    margin-bottom: 5px;
+}
+
+.regis_birthdayinput {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.regis_birthdayinput input {
+    width: 125px;
+    height: 36px;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+}
+
+.regis_gender {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.regis_gender label {
+    font-size: 12px;
+    color: #606770;
+    margin-bottom: 5px;
+}
+
+.regis_genderinput {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.genderinput_male, .genderinput_female {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    width: 105px;
+    height: 36px;
+    border: 1px solid #bdc7d8;
+}
+
+.genderinput_male {
+    margin-right: 20px;
+}
+
+.regis_rule {
+    font-size: 11px;
+    color: #777777;
+}
+
+.regis_confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.regis_confirm button {
+    width: 194px;
+    height: 36px;
+    border: none;
+    background-color: #42B72A;
+    border-radius: 5px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
 }
 
 /*navbar*/
@@ -22,6 +329,8 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
+    box-shadow: 0 2px 10px 1px #f1f1f1;
 }
 
 .nav_left {
@@ -120,15 +429,16 @@ body {
 
 /*Main content*/
 #container {
-    padding: 0 20px;
     height: 1000px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 80px;
+    position: relative;
 }
 
 .container_shortcut {
+    margin-left: 20px;
+    margin-top: 80px;
     width: 360px;
     height: 500px;
     background-color: red;
@@ -136,8 +446,44 @@ body {
 
 /*status*/
 .container_status {
+    margin-top: 80px;
     width: 680px;
     height: auto;
+}
+
+.status_create {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 20px 16px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.create_avatar {
+    margin-right: 8px;
+}
+
+.create_avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.create_input {
+    width: 100%;
+    background-color: #ececec;
+    border-radius: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+}
+
+.create_input span {
+    color: #65676B;
+    font-size: 19px;
 }
 
 .status {
@@ -388,6 +734,8 @@ hr {
     width: 360px;
     height: 500px;
     background-color: blue;
+    margin-top: 80px;
+    margin-right: 20px;
 }
 
 /*Option for status*/
@@ -397,8 +745,8 @@ hr {
     background-color: white;
     display: flex;
     flex-direction: column;
-    top: 0;
-    right: 0;
+    top: 30px;
+    left: -130px;
     border-radius: 5px;
     box-shadow: 2px 2px 10px #bdbdbd;
     visibility: hidden;
@@ -407,18 +755,563 @@ hr {
 .edit_status, .delete_status {
     padding: 10px 20px;
 }
+
 .edit_status {
     border-bottom: 1px solid #c5c5c5;
 }
+
 .edit_status i, .delete_status i {
     margin-right: 15px;
     font-size: 17px;
 }
-.delete_status i, .delete_status span{
+
+.delete_status i, .delete_status span {
     width: 17px;
     height: 17px;
     color: red;
 }
+
 .option_status_open {
     visibility: visible;
+}
+
+.modal_create_status {
+    width: 100%;
+    position: fixed;
+    background: rgb(0, 0, 0, 0.5);
+    top: 0;
+    right: 0;
+    height: 929px;
+    z-index: 2;
+    visibility: hidden;
+}
+
+.modal_create_status_open {
+    visibility: visible;
+}
+
+.form_create_status {
+    position: fixed;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.create_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #dadada;
+}
+
+.create_header span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.create_close {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #E6E4EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 15px;
+}
+
+.create_close i {
+    font-size: 19px;
+
+}
+
+.create_user {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 0;
+    margin: 0 16px;
+}
+
+.create_user_avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.create_user_avatar img {
+    width: 100%;
+    border-radius: 50%;
+    height: 100%;
+
+}
+
+.create_user_right {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create_user_username {
+    margin-top: -5px;
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.create_content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px 40px;
+    min-height: 152px;
+    width: 100%;
+}
+
+.create_status_input {
+    width: 100%;
+    height: 70px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.editable2 {
+    color: black;
+    cursor: text;
+    font-size: 19px;
+}
+
+.editable2[contenteditable]:empty::before {
+    content: "Bạn đang nghĩ gì thế?";
+    color: gray;
+    font-size: 20px;
+}
+
+.editable2:focus-visible {
+    outline: none;
+}
+
+.create_image {
+    max-width: 450px;
+    margin: 32px 20px 0;
+}
+
+.create_image img {
+    width: 100%;
+}
+
+.create_function {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    margin: 16px 16px;
+    border: 1px solid #929396;
+    height: 55px;
+    align-items: center;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+.create_function span {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.create_function i {
+    font-size: 21px;
+}
+
+#file-upload {
+    display: none;
+}
+
+.create_post {
+    padding: 16px 16px 0;
+    margin: -4px;
+}
+
+.create_post button {
+    width: 100%;
+    height: 36px;
+    background-color: #e4e6eb;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+/*modal delete status*/
+.modal_delete_status {
+    width: 100%;
+    position: fixed;
+    background: rgb(0, 0, 0, 0.5);
+    top: 0;
+    right: 0;
+    height: 929px;
+    z-index: 2;
+    visibility: hidden;
+}
+
+.modal_delete_status_open {
+    visibility: visible;
+}
+
+.form_delete_status {
+    position: fixed;
+    width: 548px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.delete_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #dadada;
+}
+
+.delete_header span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.delete_close {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #E6E4EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 15px;
+}
+
+.delete_close i {
+    font-size: 20px;
+}
+
+.delete_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete_alert {
+    padding: 12px 16px;
+    font-size: 15px;
+}
+
+.delete_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 16px;
+}
+
+.delete_btn_confirm button {
+    width: 108px;
+    height: 36px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    background-color: #0866ff;
+    border-radius: 5px;
+}
+
+.delete_btn_cancel {
+    padding-right: 8px;
+}
+
+.delete_btn_cancel button {
+    width: 52px;
+    height: 32px;
+    background-color: transparent;
+    color: #0064D1;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+}
+
+.delete_btn_cancel button:hover {
+    background-color: #E6E4EB;
+}
+
+/*profile*/
+.contain_profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contain_profile_header {
+    background-color: white;
+    width: 100%;
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 3px 5px 6px #f1f1f1;
+}
+
+.profile_cover_photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+}
+
+.profile_cover_photo img {
+    width: 1250px;
+    height: 550px;
+    border-radius: 5px;
+}
+
+.profile_info {
+    width: 1210px;
+    height: 145px;
+    display: flex;
+    flex-direction: row;
+    padding: 0 16px;
+    margin-bottom: 16px;
+}
+
+.profile_info_avatar {
+    width: 176px;
+    height: 145px;
+    margin-right: 16px;
+}
+
+.profile_info_avatar img {
+    width: 176px;
+    height: 176px;
+    border-radius: 50%;
+    margin-top: -30px;
+    border: 4px solid white;
+
+}
+
+.profile_info_name {
+    width: 60%;
+    margin: 32px 0 16px;
+}
+
+.profile_info_fullname span {
+    font-size: 32px;
+    color: #050505;
+    font-weight: bold;
+}
+
+.profile_info_cfriend {
+    margin-top: 3px;
+}
+
+.profile_info_cfriend span {
+    color: #65676B;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.profile_info_manager {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.profile_info_manager button {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 15px;
+    color: #050505;
+    font-weight: 600;
+    background-color: #E6E4EB;
+    border-radius: 5px;
+    border: none;
+}
+
+.profile_bottom {
+    display: flex;
+    flex-direction: row;
+    width: 1210px;
+    border-top: 1px solid #ccced2;
+}
+
+.profile_functions {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.profile_fun_item {
+    height: 60px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #65676B;
+    font-weight: 600;
+}
+
+.profile_functions_more {
+    display: flex;
+    align-items: center;
+}
+
+.function_more {
+    height: 36px;
+    padding: 0 16px;
+    background-color: #E6E4EB;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contain_profile_main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile_main_left {
+    width: 490px;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_description {
+    width: 100%;
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 16px 16px;
+}
+
+.describe_header {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.describe_description {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 16px;
+    font-size: 14px
+}
+
+.describe_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.describe_item i {
+    width: 35px;
+    padding: 6px;
+    font-size: 20px;
+    color: #8c939d;
+}
+.describe_item span {
+    padding: 6px;
+    font-size: 14px;
+    color: #050505;
+}
+.profile_images {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 16px;
+}
+
+.images_top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 26px;
+}
+.images_header {
+    font-size: 20px;
+    font-weight: 600;
+}
+.images_more button{
+    font-size: 16px;
+    color: #0064D1;
+    background-color: transparent;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+}
+.images_more button:hover {
+    background-color: #f2f2f2;
+}
+
+.profile_friends {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.friends_top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 26px;
+}
+.friends_header {
+    font-size: 20px;
+    font-weight: 600;
+}
+.friends_more button{
+    font-size: 16px;
+    color: #0064D1;
+    background-color: transparent;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+}
+.friends_more button:hover {
+    background-color: #f2f2f2;
+}
+.friends_count {
+    padding-top: 5px;
+    font-size: 16px;
+    color: #65676B;
+}
+.profile_main_right {
+    width: 680px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
 }
