@@ -7,8 +7,8 @@ function showHome() {
             </div>
             <div class="nav_search">
                 <div class="search_container">
-                    <i class="fa-solid fa-magnifying-glass" style="color: #6e6e6e;"></i>
-                    <input type="text" name="" id="" placeholder="Tìm kiếm trên Facebook">
+                    <input type="text" name="" id="searchStatus" placeholder="Tìm kiếm trên Facebook">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #6e6e6e;" onclick="checkValue()"></i>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@ function showHome() {
                             <div class="create_user_right">
                                 <div class="create_user_username"><span>${currentUser.fullname}</span></div>
                                 <div class="create_user_author" style="margin-top: 5px">
-                                    <select name="" id="author">
+                                    <select name="" id="author2">
                                         <option value="0">Công khai</option>
                                         <option value="1">Bạn bè</option>
                                         <option value="2">Chỉ mình tôi</option>
@@ -311,7 +311,7 @@ function showHome() {
                 <div class="create_user_right">
                     <div class="create_user_username"><span>${currentUser.fullname}</span></div>
                     <div class="create_user_author" style="margin-top: 5px">
-                        <select name="" id="">
+                        <select name="" id="editAuthor2">
                             <option value="0">Công khai</option>
                             <option value="1">Bạn bè</option>
                             <option value="2">Riêng tư</option>

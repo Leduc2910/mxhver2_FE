@@ -11,6 +11,7 @@ function showProfile(targetID) {
                         let relationship2 = relaResponse2.data;
                         let listRela = friendResponse.data;
                         let countfriend = 0;
+                        let countDemoFr = 0;
                         for (let i = 0; i < listRela.length; i++) {
                             if (listRela[i].status === 1) {
                                 countfriend++;
@@ -61,9 +62,9 @@ function showProfile(targetID) {
                         }
                         html += `<div class="profile_bottom">
                     <div class="profile_functions">
-                        <div class="profile_fun_status profile_fun_item">Bài viết</div>
+                        <div class="profile_fun_status profile_fun_item" onclick="showProfile(${currentProfile.id})">Bài viết</div>
                         <div class="profile_fun_description profile_fun_item">Giới thiệu</div>
-                        <div class="profile_fun_friend profile_fun_item">Bạn bè</div>
+                        <div class="profile_fun_friend profile_fun_item" onclick="showAllFriend(${currentProfile.id})">Bạn bè</div>
                         <div class="profile_fun_image profile_fun_item">Ảnh</div>
                         <div class="profile_fun_video profile_fun_item">Video</div>
                         <div class="profile_fun_checkin profile_fun_item">Check in</div>
@@ -75,11 +76,14 @@ function showProfile(targetID) {
                     </div>
                 </div>
             </div>
-            <div class="contain_profile_main">
+            <div class="contain_profile_main" id="contain_profile_main">
                 <div class="profile_main_left">
                     <div class="profile_description">
-                        <div class="describe_header">Giới thiệu</div>
-                        <div class="describe_description">${currentProfile.description}</div>`
+                        <div class="describe_header">Giới thiệu</div><div class="describe_description">`
+                            if (currentProfile.description != null) {
+                                html += `${currentProfile.description}`
+                            }
+                            html += `</div>`
                         if (currentProfile.address != null) {
                             html += `<div class="describe_address describe_item"><i class="fa-solid fa-house-chimney"></i><span>Sống tại ${currentProfile.address}</span>
                         </div>`
@@ -113,7 +117,37 @@ function showProfile(targetID) {
                                 <button>Xem tất cả bạn bè</button>
                             </div>
                         </div>
-                        <div class="friends_count">175 người bạn</div>
+                        `
+                        if (countfriend > 0) {
+                            html += `<div class="friends_count">${countfriend} bạn bè</div>`;
+                        }
+                            html += `
+                        <div class="contain_demo_friend">`
+                        for (let i = 0; i < listRela.length; i++) {
+                            if (countDemoFr >= 9) {
+                                countDemoFr = 0;
+                                break;
+                            }
+                            if (listRela[i].status === 1) {
+                                if (listRela[i].user1.id == currentProfile.id) {
+                                    html += `<div class="pro_friend">
+                            <div class="pro_friend_img"><img src="${listRela[i].user2.avatar}" alt=""></div>
+                            <div class="pro_friend_name">${listRela[i].user2.fullname}</div>
+                            </div>`
+                                } else if (listRela[i].user2.id == currentProfile.id) {
+                                    html += `<div class="pro_friend">
+                            <div class="pro_friend_img"><img src="${listRela[i].user1.avatar}" alt=""></div>
+                            <div class="pro_friend_name">${listRela[i].user1.fullname}</div>
+                            </div>`
+                                }
+                                countDemoFr++;
+                            }
+                        }
+                        `<div class="pro_friend">
+                            <div class="pro_friend_img"><img src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Favatar.jpg?alt=media&token=9ee21966-aaa1-45d2-b66c-5832b2755aa6" alt=""></div>
+                            <div class="pro_friend_name">Huy chiến</div>
+                            </div>`
+                        html += `</div>
                     </div>
                 </div>
                 <div class="profile_main_right">`
@@ -124,8 +158,12 @@ function showProfile(targetID) {
                     </div>`
                         }
                         for (let i = 0; i < listStatus.length; i++) {
-                            let timeDiffStatus = getTimeDiff(listStatus[i].createAt)
-                            html += `<div class="status" id="status_${listStatus[i].id}">
+                            if (listStatus[i].authorization === 0 || currentProfile.id === currentUser.id || ((relationship != "" || relationship2 != "") && (relationship.status === 1 || relationship2.status === 1)) || (listStatus[i].authorization === 2 && listStatus[i].userId === currentUser.id)) {
+                                if (listStatus[i].authorization === 2 && currentProfile.id !== currentUser.id) {
+                                    continue;
+                                }
+                                let timeDiffStatus = getTimeDiff(listStatus[i].createAt)
+                                html += `<div class="status" id="status_${listStatus[i].id}">
                         <div class="status_header">
                             <div class="status_avatar"><img src="${currentProfile.avatar}" alt=""></div>
                             <div class="status_info">
@@ -133,17 +171,17 @@ function showProfile(targetID) {
                                 </div>
                                 <div class="status_time">
                                     <span>${timeDiffStatus}</span>&nbsp;<span>&#8226;</span>&nbsp;`
-                            if (listStatus[i].authorization === 0) {
-                                html += `<span><i class="fa-solid fa-earth-asia"></i></span>`
-                            } else if (listStatus[i].authorization === 1) {
-                                html += `<span><i class="fa-solid fa-user-group"></i></span>`
-                            } else if (listStatus[i].authorization === 2) {
-                                html += `<span><i class="fa-solid fa-lock"></i></span>`
-                            }
+                                if (listStatus[i].authorization === 0) {
+                                    html += `<span><i class="fa-solid fa-earth-asia"></i></span>`
+                                } else if (listStatus[i].authorization === 1) {
+                                    html += `<span><i class="fa-solid fa-user-group"></i></span>`
+                                } else if (listStatus[i].authorization === 2) {
+                                    html += `<span><i class="fa-solid fa-lock"></i></span>`
+                                }
                                 html += `</div>
                             </div>`
-                            if (currentProfile.id === currentUser.id) {
-                                html += `<div class="status_option">
+                                if (currentProfile.id === currentUser.id) {
+                                    html += `<div class="status_option">
                                 <i class="fa-solid fa-ellipsis"
                                    onclick="openModalOptionStatus(${listStatus[i].id})"></i>
                                 <div class="option_status" id="option_status_${listStatus[i].id}">
@@ -153,16 +191,16 @@ function showProfile(targetID) {
                                             class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
                                 </div>
                             </div>`
-                            }
-                            html += `</div>
+                                }
+                                html += `</div>
                         <div class="status_content">
                             <div class="content"><span>${listStatus[i].content}</span></div>`
-                            if (listStatus[i].usedImageSet.length != 0) {
-                                html += `<div class="content_img">
+                                if (listStatus[i].usedImageSet.length != 0) {
+                                    html += `<div class="content_img">
                         <img src="${listStatus[i].usedImageSet[0].source}" alt="">
                     </div>`
-                            }
-                            html += `</div>
+                                }
+                                html += `</div>
                         <div class="status_bottom">
                             <div class="status_detail">
                                 <div class="count_like"><span id="totalLiked_${listStatus[i].id}">${listStatus[i].likedSet.length}</span><span> lượt thích</span>
@@ -177,21 +215,21 @@ function showProfile(targetID) {
                             <div class="status_function">
                                 <div class="function_like" id="liked_${listStatus[i].id}"
                                      onclick="likePost(${listStatus[i].id})">`
-                            let isLiked = false;
-                            for (let j = 0; j < listStatus[i].likedSet.length; j++) {
-                                if (currentUser.id === listStatus[i].likedSet[j].user.id) {
-                                    isLiked = true;
-                                    break;
+                                let isLiked = false;
+                                for (let j = 0; j < listStatus[i].likedSet.length; j++) {
+                                    if (currentUser.id === listStatus[i].likedSet[j].user.id) {
+                                        isLiked = true;
+                                        break;
+
+                                    }
+                                }
+                                if (isLiked) {
+                                    html += `<i class="fa-regular fa-thumbs-up" style="color: dodgerblue"></i><span style="color: dodgerblue">Thích</span>`
+                                } else {
+                                    html += `<i class="fa-regular fa-thumbs-up"></i><span >Thích</span>`
 
                                 }
-                            }
-                            if (isLiked) {
-                                html += `<i class="fa-regular fa-thumbs-up" style="color: dodgerblue"></i><span style="color: dodgerblue">Thích</span>`
-                            } else {
-                                html += `<i class="fa-regular fa-thumbs-up"></i><span >Thích</span>`
-
-                            }
-                            html += `</div>
+                                html += `</div>
                                 <div class="function_comment"><i
                                         class="fa-regular fa-comment"></i><span>Bình luận</span></div>
                                 <div class="function_share"><i class="fa-solid fa-share"></i><span>Chia sẻ</span></div>
@@ -199,9 +237,9 @@ function showProfile(targetID) {
                             <hr>
                         </div>
                         <div class="contain_comment">`
-                            for (let j = 0; j < listStatus[i].commentSet.length; j++) {
-                                let diffTimeComment = getTimeDiff(listStatus[i].commentSet[j].createAt)
-                                html += `<div class="comment">
+                                for (let j = 0; j < listStatus[i].commentSet.length; j++) {
+                                    let diffTimeComment = getTimeDiff(listStatus[i].commentSet[j].createAt)
+                                    html += `<div class="comment">
                         <div class="comment_avatar">
                             <img src="${listStatus[i].commentSet[j].user.avatar}" alt="">
                         </div>
@@ -218,16 +256,16 @@ function showProfile(targetID) {
                                 <div class="comment_reply"><span>Phản hồi</span></div>
                                 </div>
                             </div>`
-                                if (currentUser.id === listStatus[i].commentSet[j].user.id) {
-                                    html += `<div class="comment_more" onclick="commentDeletePro(${listStatus[i].commentSet[j].id}, ${currentProfile.id})">
+                                    if (currentUser.id === listStatus[i].commentSet[j].user.id) {
+                                        html += `<div class="comment_more" onclick="commentDeletePro(${listStatus[i].commentSet[j].id}, ${currentProfile.id})">
                         <i class="fa-solid fa-trash-can" ></i>
                         </div>`
-                                }
+                                    }
 
-                                html += `</div>
+                                    html += `</div>
                 `
-                            }
-                            html += `</div>
+                                }
+                                html += `</div>
                         <div class="create_comment">
                             <div class="comment_avatar"><img src="${currentUser.avatar}" alt=""></div>
                             <div class="comment_input">
@@ -241,6 +279,7 @@ function showProfile(targetID) {
                             </div>
                         </div>
                     </div>`
+                            }
                         }
                         html += `</div>
             </div>
@@ -290,6 +329,7 @@ function postStatusPro() {
     if (document.getElementById('create_img2') != null) {
         srcImage = document.getElementById('create_img2').src;
     }
+    let author = +document.getElementById("author2").value;
     let status;
     if (content.trim() !== '') {
         if (srcImage !== null) {
@@ -298,13 +338,13 @@ function postStatusPro() {
                     id: currentUser.id
                 }, content: content, usedImageSet: [{
                     source: srcImage
-                }]
+                }], authorization: author
             }
         } else {
             status = {
                 user: {
                     id: currentUser.id
-                }, content: content
+                }, content: content, authorization: author
             }
         }
     } else if (srcImage != null) {
@@ -313,7 +353,7 @@ function postStatusPro() {
                 id: currentUser.id
             }, content: content, usedImageSet: [{
                 source: srcImage
-            }]
+            }], authorization: author
         }
 
     }
@@ -405,6 +445,7 @@ function editStatusPro() {
             let status = response.data;
             let content = document.getElementById("editContent2").innerHTML;
             let srcImage = null;
+            let author = +document.getElementById("editAuthor2").value;
             if (document.getElementById('edit_img2') != null) {
                 srcImage = document.getElementById('edit_img2').src;
             }
@@ -418,6 +459,7 @@ function editStatusPro() {
                 status.usedImageSet = usedImageSet;
             }
             status.content = content;
+            status.authorization = author;
             axios.put(`http://localhost:8080/status/${status.id}`, status).then((response) => {
                 document.getElementById('editContent2').textContent = '';
                 let img = document.getElementById('edit_img2');
@@ -443,4 +485,63 @@ function commentDeletePro(id, targetID) {
             showProfile(targetID);
         })
     }
+}
+
+function showAllFriend(currentProID) {
+    axios.get(`http://localhost:8080/relationship/friend/${currentProID}`).then((response) => {
+        let listFriend = response.data;
+        let html = `<div class="contain_all_friend">
+                    <div class="all_friend_header">
+                        <div class="all_friend_title">Bạn bè</div>
+                        <div class="all_friend_search"><i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" name="" id="searchFriend" placeholder="Tìm kiếm" oninput="searchFriend(${currentProID})"></div>
+                        <div class="all_friend_req">Lời mời kết bạn</div>
+                        <div class="all_friend_sug">Tìm bạn bè</div>
+                    </div>
+                    <div class="all_friend" id="all_friend">`;
+        for (let i = listFriend.length - 1; i >= 0; i--) {
+            if (listFriend[i].status === 1) {
+                if (listFriend[i].user1.id == currentProID) {
+                    html += `<div class="all_friend_item">
+                            <div class="all_friend_avatar"><img src="${listFriend[i].user2.avatar}" alt=""></div>
+                            <div class="all_friend_fullname">${listFriend[i].user2.fullname}</div>
+                        </div>`
+                } else if (listFriend[i].user2.id == currentProID) {
+                    html += `<div class="all_friend_item">
+                            <div class="all_friend_avatar"><img src="${listFriend[i].user1.avatar}" alt=""></div>
+                            <div class="all_friend_fullname">${listFriend[i].user1.fullname}</div>
+                        </div>`
+                }
+
+            }
+        }
+        html += `</div>
+                </div>`
+        document.getElementById("contain_profile_main").innerHTML = html
+    })
+}
+function searchFriend(currentProID) {
+    console.log(1)
+    axios.get(`http://localhost:8080/relationship/friend/${currentProID}`).then((response) => {
+        let listFriend = response.data;
+        let html = ``;
+        let keyword = document.getElementById("searchFriend").value;
+        for (let i = listFriend.length - 1; i >= 0; i--) {
+            if (listFriend[i].status === 1) {
+                if (listFriend[i].user1.id == currentProID && listFriend[i].user2.fullname.toLowerCase().includes(keyword.toLowerCase())) {
+                    html += `<div class="all_friend_item">
+                            <div class="all_friend_avatar"><img src="${listFriend[i].user2.avatar}" alt=""></div>
+                            <div class="all_friend_fullname">${listFriend[i].user2.fullname}</div>
+                        </div>`
+                } else if (listFriend[i].user2.id == currentProID  && listFriend[i].user1.fullname.toLowerCase().includes(keyword.toLowerCase)) {
+                    html += `<div class="all_friend_item">
+                            <div class="all_friend_avatar"><img src="${listFriend[i].user1.avatar}" alt=""></div>
+                            <div class="all_friend_fullname">${listFriend[i].user1.fullname}</div>
+                        </div>`
+                }
+
+            }
+        }
+        document.getElementById("all_friend").innerHTML = html
+    })
 }

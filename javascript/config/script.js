@@ -193,7 +193,22 @@
 
         return day > 0 && day <= monthLength[month];
     }
+    function validatePassword(password) {
+        if (password.length < 6 || password.length > 32) {
+            return false;
+        }
 
+        if (!/^[A-Z]/.test(password)) {
+            return false;
+        }
+
+
+        if (!/\d/.test(password)) {
+            return false;
+        }
+
+        return true;
+    }
     function openModalEditStatus(statusID) {
         axios.get(`http://localhost:8080/status/${statusID}`).then((response) => {
             let status = response.data;
@@ -259,7 +274,14 @@
                     document.getElementById("contain_edit_img2").style.border = "1px solid #ced0d4";
                 }
                 document.getElementById("editContent2").innerHTML = status.content;
-
+                let selectElement = document.getElementById("editAuthor2");
+                for (let i = 0; i < selectElement.options.length; i++) {
+                    let option = selectElement.options[i];
+                    if (parseInt(option.value) == status.authorization) {
+                        option.selected = true;
+                        break;
+                    }
+                }
                 modalEdit.classList.add("modal_create_status_open");
                 body.style.overflow = 'hidden';
                 document.getElementById("editStatus2").value = statusID;
@@ -363,4 +385,9 @@
         }
         document.getElementById("create_deledit_image2").style.visibility = "hidden";
         document.getElementById("contain_edit_img2").style.border = "none";
+    }
+    function checkValue() {
+     if (document.getElementById("searchStatus").value !== "") {
+         showSearchPage();
+     }
     }

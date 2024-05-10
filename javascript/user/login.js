@@ -6,6 +6,7 @@ function showLoginPage() {
             <span>Facebook giúp bạn kết nối và chia sẻ<br>với mọi người trong cuộc sống của bạn.</span>
         </div>
         <div class="form_login">
+             <span class="error_login" id="error_login"></span>
             <input type="text" id="username" placeholder="Email hoặc số điện thoại">
             <input type="password" id="password" placeholder="Mật khẩu">
             <button class="login_button" onclick="login()">Đăng nhập</button>
@@ -20,6 +21,7 @@ function showLoginPage() {
                 <span class="regis_header2">Nhanh chóng và dễ dàng</span>
                 <i class="fa-solid fa-xmark" onclick="showRegisterPageModal()"></i></div>
             <div class="regis_main">
+                <div class="error_register" id="error_register"></div>
                 <div class="regis_name">
                     <input type="text" name="firstname" id="firstname" placeholder="Họ">
                     <input type="text" name="lastname" id="lastname" placeholder="Tên">
@@ -83,6 +85,8 @@ function login() {
         let currentUser = response.data;
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
         showHome()
+    }).catch((e) => {
+        document.getElementById("error_login").innerHTML = "* Sai thông tin tài khoản hoặc mật khẩu. Hãy thử lại!";
     })
 }
 
@@ -97,14 +101,30 @@ function showRegisterPageModal() {
 }
 
 function register() {
-    let fullname = document.getElementById("firstname").value.trim() +" " + document.getElementById("lastname").value.trim();
-    let username = document.getElementById('username_regis').value;
+    let firstname = document.getElementById("firstname").value.trim();
+    let lastname = document.getElementById("lastname").value.trim();
+    let username = document.getElementById('username_regis').value.trim();
     let password = document.getElementById('password_regis').value;
     let confirmPassword = document.getElementById('confirmpassword').value;
-    let email = document.getElementById('email').value;
-    let birthday = document.getElementById('birth_day').value.trim() + "/" + document.getElementById('birth_month').value.trim() + "/" + document.getElementById('birth_year').value.trim();
+    let email = document.getElementById('email').value.trim();
+    let birth_day = document.getElementById('birth_day').value.trim();
+    let birth_month = document.getElementById('birth_month').value.trim();
+    let birth_year = document.getElementById('birth_year').value.trim();
+
     let selectedGender;
     let genderInputs = document.getElementsByName("gender");
+    if (firstname === '' || lastname === '' || username === '' || password === '' || confirmPassword === '' || email === '' || birth_day === '' || birth_month === '' || birth_year === '' || genderInputs.length == 0) {
+        document.getElementById("error_register").innerHTML = "* Vui lòng nhập đầy đủ thông tin.";
+        return;
+    }
+    if(!isValidDate(birth_day + "/" + birth_month + "/" + birth_year)) {
+        document.getElementById("error_register").innerHTML = "* Sai định dạnh ngày sinh dd/MM/yyyy.";
+        return;
+    }
+    if (!validatePassword(password)) {
+        document.getElementById("error_register").innerHTML = "* Mật khẩu có độ dài từ 6 đến 32 ký tự<br>* Bắt đầu bằng chữ hoa và có ít nhất 1 số.";
+        return;
+    }
     for (let i = 0; i < genderInputs.length; i++) {
         if (genderInputs[i].checked) {
             selectedGender = +(genderInputs[i].value);
@@ -112,18 +132,21 @@ function register() {
         }
     }
     let user = {
-        fullname : fullname,
+        fullname: firstname + " " + lastname,
         username: username,
         password: password,
         confirmPassword: confirmPassword,
         email: email,
-        birthday: birthday,
+        birthday: birth_day + "/" + birth_month + "/" + birth_year,
         gender: selectedGender
     }
     axios.post(`http://localhost:8080/user`, user).then(function (response) {
         showLoginPage();
+    }).catch((e) => {
+        document.getElementById("error_register").innerHTML = "* "+e.response.data;
     })
 }
+
 function logout() {
     localStorage.removeItem("currentUser");
     firstOpenApp();

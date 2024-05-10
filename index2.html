@@ -46,66 +46,18 @@
         </div>
     </div>
     <div id="container">
-        <div class="menu_friends">
-            <div class="menu_fr_header">
-                <div class="menu_fr_title">Bạn bè</div>
-                <div class="menu_fr_option"><i class="fa-solid fa-gear"></i></div>
-            </div>
-            <div class="menu_fr_home menu_fr_item">
-                <div class="fr_home_icon menu_fr_icon"><i class="fa-solid fa-user-group"></i></div>
-                <div class="fr_home_label menu_fr_label">Trang chủ</div>
-            </div>
-            <div class="menu_fr_req menu_fr_item">
-                <div class="fr_req_icon menu_fr_icon"><i class="fa-solid fa-user-check"></i></div>
-                <div class="fr_req_label menu_fr_label">Lời mời kết bạn</div>
-            </div>
-            <div class="menu_fr_sug menu_fr_item">
-                <div class="fr_sug_icon menu_fr_icon"><i class="fa-solid fa-user-plus"></i></div>
-                <div class="fr_sug_label menu_fr_label">Gợi ý</div>
-            </div>
-            <div class="menu_fr_acpt menu_fr_item">
-                <div class="fr_acpt_icon menu_fr_icon"><i class="fa-solid fa-user"></i></div>
-                <div class="fr_acpt_label menu_fr_label">Tất cả kết bạn</div>
-            </div>
-        </div>
-        <div class="main_friends">
-            <div class="contain_friend_req">
-                <div class="friend_req_header">
-                    <div class="friend_req_title">Lời mời kết bạn</div>
-                    <div class="friend_req_all">Xem tất cả</div>
+        <div class="contain_result_search">
+            <div class="menu_friends">
+                <div class="menu_fr_header">
+                    <div class="menu_fr_title">Kết quả tìm kiếm</div>
                 </div>
-                <div class="listfr_req">
-                </div>
-                <div class="friend_req_more">
-                    <span>Xem thêm</span><i class="fa-solid fa-caret-down"></i>
+                <hr style="border: none;border-bottom: 1px solid #caced7">
+                <div class="menu_fr_home menu_fr_item" style="margin-top: 20px;background-color: #f0f2f5; border-radius: 5px; ">
+                    <div class="fr_home_icon menu_fr_icon" style="background-color: #1877f2;color: white"><i class="fa-solid fa-list"></i></div>
+                    <div class="fr_home_label menu_fr_label">Tất cả</div>
                 </div>
             </div>
-            <hr class="lstfriend_hr">
-            <div class="contain_friend_req">
-                <div class="friend_req_header">
-                    <div class="friend_req_title">Những người bạn có thể biết</div>
-                    <div class="friend_req_all">Xem tất cả</div>
-                </div>
-                <div class="listfr_req">
-                    <div class="friend_req">
-                        <div class="friend_req_avatar"><img
-                                src="https://firebasestorage.googleapis.com/v0/b/social-network-c9f60.appspot.com/o/images%2Favatar.jpg?alt=media&token=9ee21966-aaa1-45d2-b66c-5832b2755aa6"
-                                alt=""></div>
-                        <div class="friend_req_info">
-                            <div class="friend_req_fullname">Lê Minh Đức</div>
-                            <div class="friend_req_mutual">7 bạn chung</div>
-                            <div class="friend_req_add">
-                                <button>Thêm bạn bè</button>
-                            </div>
-                            <div class="friend_req_cancel">
-                                <button>Xóa</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="friend_req_more">
-                    <span>Xem thêm</span><i class="fa-solid fa-caret-down"></i>
-                </div>
+            <div class="container_status" id="container_status_search">
             </div>
         </div>
     </div>
@@ -167,7 +119,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
             integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 </body>
 </html>
 

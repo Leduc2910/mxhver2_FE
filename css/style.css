@@ -50,7 +50,18 @@ input:focus-visible {
     box-shadow: 1px 1px 10px #bdbdbd;
 
 }
-
+.error_login {
+    color: red;
+    font-size: 14px;
+    margin: 10px 0;
+    height: 16px;
+}
+.error_register {
+    color: red;
+    font-size: 14px;
+    margin: 10px 0;
+    min-height: 1px;
+}
 .form_login input {
     width: 364px;
     height: 52px;
@@ -358,16 +369,16 @@ input:focus-visible {
 
 .search_container i {
     font-size: 16px;
-    padding-left: 15px;
-    padding-right: 8px;
+    padding-right: 13px;
 }
 
 .search_container input {
     width: 100%;
-    padding-right: 13px;
     background-color: transparent;
     font-size: 16px;
     border: none;
+    padding-left: 15px;
+    padding-right: 8px;
 }
 
 .search_container input:focus-visible {
@@ -597,14 +608,16 @@ input:focus-visible {
     font-size: 14px;
     color: #050505;
 }
-.status_name span:hover{
-    text-decoration: underline  ;
+
+.status_name span:hover {
+    text-decoration: underline;
 }
 
 .status_time span {
     color: #929396;
     font-size: 14px;
 }
+
 .status_option {
     width: 36px;
     height: 36px;
@@ -613,9 +626,11 @@ input:focus-visible {
     justify-content: center;
     align-items: center;
 }
+
 .status_option:hover {
     background-color: #E6E4EB;
 }
+
 .status_option i {
     color: #606266;
     font-size: 20px
@@ -634,6 +649,7 @@ input:focus-visible {
     font-size: 15px;
     word-wrap: break-word;
 }
+
 .status_content .content_img {
     display: flex;
     justify-content: center;
@@ -789,11 +805,13 @@ hr {
     font-size: 12px;
     color: #050505;
 }
+
 .comment_content {
     font-size: 14px;
     color: #050505;
 
 }
+
 .comment_bottom {
     padding: 10px 0 0 10px;
     display: flex;
@@ -812,6 +830,7 @@ hr {
     font-weight: bold;
     margin-right: 15px;
 }
+
 .comment_more {
     position: relative;
     width: 36px;
@@ -827,12 +846,15 @@ hr {
     color: #65676B;
     font-size: 14px;
 }
-.comment:hover .comment_more{
+
+.comment:hover .comment_more {
     visibility: visible;
 }
+
 .comment_more:hover {
     background-color: #E6E4EB;
 }
+
 .comment_function {
     position: absolute;
     width: 300px;
@@ -844,19 +866,22 @@ hr {
     top: 40px;
     visibility: hidden;
 }
- .del_comment_btn {
+
+.del_comment_btn {
     height: 33px;
     display: flex;
     align-items: center;
     padding: 12px 8px;
-     margin: 0 8px 8px;
+    margin: 0 8px 8px;
     font-size: 14px;
     color: #050505;
-     border-radius: 5px;
+    border-radius: 5px;
 }
+
 .del_comment_btn:hover {
     background-color: #f1f1f1;
 }
+
 .edit_comment_btn {
     height: 33px;
     display: flex;
@@ -867,9 +892,11 @@ hr {
     color: #050505;
     border-radius: 5px;
 }
+
 .edit_comment_btn:hover {
     background-color: #f1f1f1;
 }
+
 .container_friend {
     width: 360px;
     height: auto;
@@ -1106,7 +1133,7 @@ hr {
     color: #050505;
 }
 
-.create_user_author select{
+.create_user_author select {
     background-color: #E6E4EB;
     font-size: 12px;
     color: #050505;
@@ -1117,9 +1144,10 @@ hr {
     border: none;
     border-radius: 5px;
 }
-.create_user_author select:focus-visible{
+
+.create_user_author select:focus-visible {
     outline: none;
- }
+}
 
 .create_content {
     display: flex;
@@ -1128,6 +1156,7 @@ hr {
     min-height: 152px;
     width: 100%;
 }
+
 .create_main_content {
     display: flex;
     flex-direction: column;
@@ -1138,6 +1167,7 @@ hr {
     scrollbar-width: none;
 
 }
+
 .create_status_input {
     width: 100%;
     margin-bottom: 30px;
@@ -1173,6 +1203,7 @@ hr {
     width: 450px;
     border-radius: 5px;
 }
+
 .create_delete_image {
     position: absolute;
     width: 28px;
@@ -1189,9 +1220,11 @@ hr {
     color: #9d9da6;
     visibility: hidden;
 }
+
 .create_delete_image:hover {
     background-color: #E6E4EB;
 }
+
 .create_function {
     display: flex;
     flex-direction: row;
@@ -1218,9 +1251,11 @@ hr {
 #file-upload {
     display: none;
 }
+
 #file-upload2 {
     display: none;
 }
+
 .create_post {
     padding: 16px 0 0;
     margin: -4px;
@@ -1435,6 +1470,7 @@ hr {
     border-radius: 5px;
     border: none;
 }
+
 .pro_btn_acpt {
     height: 36px;
     padding: 0 12px;
@@ -1446,6 +1482,7 @@ hr {
     border: none;
     margin-right: 10px;
 }
+
 .profile_acpt_friend {
     display: flex;
     flex-direction: row;
@@ -1458,17 +1495,20 @@ hr {
     border-radius: 5px;
     margin-bottom: 16px;
 }
+
 .pro_acpt_title {
     font-size: 16px;
     font-weight: 600;
     color: #050505;
 }
+
 .pro_acpt_buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
+
 .pro_btn_mess2 {
     height: 36px;
     padding: 0 12px;
@@ -1479,6 +1519,7 @@ hr {
     border-radius: 5px;
     border: none;
 }
+
 .pro_btn_fr {
     height: 36px;
     padding: 0 12px;
@@ -1490,6 +1531,7 @@ hr {
     border: none;
     margin-right: 10px;
 }
+
 .pro_btn_mess {
     height: 36px;
     padding: 0 12px;
@@ -1500,6 +1542,7 @@ hr {
     border-radius: 5px;
     border: none;
 }
+
 .profile_bottom {
     display: flex;
     flex-direction: row;
@@ -1614,6 +1657,7 @@ hr {
     font-size: 14px;
     color: #050505;
 }
+
 .profile_images {
     width: 100%;
     background-color: white;
@@ -1699,6 +1743,7 @@ hr {
     flex-direction: column;
     height: auto;
 }
+
 /*menu friend*/
 .menu_friends {
     position: fixed;
@@ -1713,6 +1758,7 @@ hr {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 
 }
+
 .menu_fr_item {
     display: flex;
     flex-direction: row;
@@ -1720,10 +1766,12 @@ hr {
     height: 48px;
     padding: 0 8px;
 }
+
 .menu_fr_item:hover {
     background-color: #f0f2f5;
-    border-radius: 5px;
+    border-radius: 10px;
 }
+
 .menu_fr_header {
     display: flex;
     flex-direction: row;
@@ -1733,11 +1781,13 @@ hr {
     padding: 0 8px;
     height: 48px;
 }
+
 .menu_fr_title {
     font-size: 24px;
     color: #050505;
     font-weight: 600;
 }
+
 .menu_fr_option {
     font-size: 20px;
     color: #050505;
@@ -1749,6 +1799,7 @@ hr {
     align-items: center;
     justify-content: center;
 }
+
 .menu_fr_icon {
     font-size: 18px;
     width: 36px;
@@ -1760,10 +1811,12 @@ hr {
     border-radius: 50%;
     margin-right: 12px;
 }
+
 .menu_fr_label {
     font-size: 16px;
     color: #050505;
 }
+
 .main_friends {
     width: 1545px;
     height: 500px;
@@ -1773,17 +1826,20 @@ hr {
     display: flex;
     flex-direction: column;
 }
+
 .contain_friend_req {
     display: flex;
     flex-direction: column;
     padding: 0 16px;
 }
+
 .friend_req_header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 20px 0;
 }
+
 .friend_req_title {
     display: flex;
     align-items: center;
@@ -1791,18 +1847,21 @@ hr {
     color: #050505;
     font-weight: 600;
 }
+
 .friend_req_all {
     display: flex;
     align-items: center;
     color: #0064D1;
     font-size: 16px;
 }
+
 .listfr_req {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     margin-bottom: 12px;
 }
+
 .friend_req {
     margin: 4px;
     height: 354px;
@@ -1812,15 +1871,18 @@ hr {
     flex-direction: column;
     border-radius: 5px;
 }
+
 .friend_req_avatar {
     width: 202px;
     height: 202px;
 }
+
 .friend_req_avatar img {
     width: 202px;
     height: 202px;
     border-radius: 5px 5px 0 0;
 }
+
 .friend_req_info {
     width: 100%;
     padding: 12px;
@@ -1829,15 +1891,18 @@ hr {
     flex-direction: column;
     justify-content: center;
 }
+
 .friend_req_fullname {
     font-size: 16px;
     color: #050505;
     padding-bottom: 1px;
     font-weight: 600;
 }
+
 .friend_req_fullname:hover {
     text-decoration: underline;
 }
+
 .friend_req_mutual {
     font-size: 14px;
     color: #65676B;
@@ -1845,7 +1910,8 @@ hr {
     display: flex;
     align-items: center;
 }
-.friend_req_submit button{
+
+.friend_req_submit button {
     width: 100%;
     color: white;
     padding: 0 12px;
@@ -1856,10 +1922,12 @@ hr {
     height: 36px;
     border-radius: 5px;
 }
-.friend_req_submit button:hover{
+
+.friend_req_submit button:hover {
     background-color: #005df5;
 }
-.friend_req_add button{
+
+.friend_req_add button {
     width: 100%;
     color: #0064D1;
     padding: 0 12px;
@@ -1870,13 +1938,16 @@ hr {
     height: 36px;
     border-radius: 5px;
 }
+
 .friend_req_add button:hover {
     background-color: #e1eafc;
 }
+
 .friend_req_cancel {
     margin-top: 6px;
 }
-.friend_req_cancel button{
+
+.friend_req_cancel button {
     width: 100%;
     color: #050505;
     padding: 0 12px;
@@ -1887,12 +1958,15 @@ hr {
     height: 36px;
     border-radius: 5px;
 }
+
 .friend_req_cancel button:hover {
     background-color: #dcd9e3;
 }
+
 .lstfriend_hr {
     margin: 12px 0;
 }
+
 .friend_req_more {
     width: 100%;
     display: flex;
@@ -1903,13 +1977,16 @@ hr {
     color: #0064D1;
     font-weight: 600;
 }
+
 .friend_req_more:hover {
     background-color: #E6E4EB;
     border-radius: 5px;
 }
+
 .friend_req_more span {
     margin-right: 10px;
 }
+
 .no_friend_req {
     width: 100%;
     display: flex;
@@ -1984,10 +2061,12 @@ hr {
     display: flex;
     flex-direction: column;
 }
+
 .edit_ava_header {
     display: flex;
     flex-direction: column;
 }
+
 .edit_ava_header {
     display: flex;
     flex-direction: row;
@@ -1995,41 +2074,49 @@ hr {
     align-items: center;
     padding: 20px 16px 4px;
 }
+
 .edit_ava_title {
     font-size: 20px;
     color: #050505;
     font-weight: 600;
 }
+
 .edit_ava_upload label {
     color: #0064D1;
     font-size: 16px;
 
 }
+
 .edit_ava_avatar {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 16px;
 }
+
 .edit_ava_avatar img {
     width: 168px;
     height: 168px;
     border-radius: 50%;
 }
+
 .file-upload {
     display: none;
 }
+
 .edit_cover_image {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 16px;
 }
+
 .edit_cover_image img {
     width: 500px;
     height: 185px;
     border-radius: 5px;
 }
+
 .edit_input_description {
     display: flex;
     justify-content: center;
@@ -2038,6 +2125,7 @@ hr {
     padding-top: 16px;
     margin-top: 5px;
 }
+
 .edit_input_description textarea {
     width: 213px;
     height: 69px;
@@ -2049,11 +2137,13 @@ hr {
     overflow-y: auto;
     border: 1px solid #c3c3c7;
 }
+
 .edit_input_description textarea:focus-visible {
-background-color: white;
+    background-color: white;
     outline: 1px solid #0064D1;
     border: none;
 }
+
 .edit_input_remain {
     display: flex;
     justify-content: right;
@@ -2062,29 +2152,34 @@ background-color: white;
     font-size: 12px;
     margin-top: 5px;
 }
+
 .edit_information {
     display: flex;
     flex-direction: column;
     padding: 16px;
 }
+
 .edit_info_item {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 10px;
 }
+
 .edit_info_item i {
     width: 35px;
     padding: 6px;
     font-size: 20px;
     color: #8c939d;
 }
+
 .edit_info_item span {
     padding: 6px;
     font-size: 16px;
     color: #050505;
     width: 80px;
 }
+
 .edit_info_item input[type="text"] {
     height: 35px;
     font-size: 14px;
@@ -2092,6 +2187,7 @@ background-color: white;
     border-radius: 5px;
     padding-left: 10px;
 }
+
 .describe_male, .describe_female {
     display: flex;
     justify-content: space-between;
@@ -2105,10 +2201,12 @@ background-color: white;
     margin-right: 30px;
     height: 35px;
 }
+
 .edit_btn_save {
     padding: 20px 16px;
 }
-.edit_btn_save button{
+
+.edit_btn_save button {
     width: 100%;
     height: 40px;
     background-color: #EBF5FF;
@@ -2119,8 +2217,125 @@ background-color: white;
     border: none;
     border-radius: 5px;
 }
+
 .create_comt_btnsent {
     background-color: transparent;
     border: none;
     color: #6e6e6e;
+}
+
+.contain_demo_friend {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.pro_friend {
+    display: flex;
+    flex-direction: column;
+    width: 145px;
+    height: 183px;
+    margin:0 3px 12px;
+}
+
+.pro_friend_img img {
+    width: 145px;
+    height: 145px;
+    border-radius: 8px;
+}
+
+.pro_friend_name {
+    font-size: 13px;
+    color: #050505;
+    font-weight: 600;
+}
+
+.contain_all_friend {
+    width: 1210px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.all_friend_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.all_friend_title {
+    font-size: 20px;
+    color: #050505;
+    font-weight: 600;
+    width: 60%;
+}
+
+.all_friend_search {
+    width: 205px;
+    height: 36px;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 50px;
+    padding: 0 10px;
+    margin-right: 20px;
+
+}
+.all_friend_search i {
+    color: #8c939d;
+}
+.all_friend_search input {
+    background-color: transparent;
+    padding: 7px 6px 9px;
+    font-size: 14px;
+    width: 100%;
+    border: none;
+}
+.all_friend_req, .all_friend_sug {
+    text-align: center;
+    font-size: 14px;
+    color: #0064D1;
+    font-weight: bold;
+    width: 11%;
+}
+.all_friend {
+    width: 100%;
+    display: flex;
+
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top:50px;
+}
+.all_friend_item {
+    width: 382px;
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    border: 1px solid #f0f2f5;
+    border-radius: 5px;
+    margin: 0 5px 8px;
+}
+.all_friend_avatar {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.all_friend_avatar img{
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+}
+.all_friend_fullname {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #050505;
 }

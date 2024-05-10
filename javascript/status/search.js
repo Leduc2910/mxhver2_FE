@@ -1,11 +1,33 @@
-function showAllStatus() {
+function showSearchPage() {
+    let html = `
+    <div class="contain_result_search">
+            <div class="menu_friends">
+                <div class="menu_fr_header">
+                    <div class="menu_fr_title">Kết quả tìm kiếm</div>
+                </div>
+                <hr style="border: none;border-bottom: 1px solid #caced7">
+                <div class="menu_fr_home menu_fr_item" >
+                    <div class="fr_home_icon menu_fr_icon" ><i class="fa-solid fa-list"></i></div>
+                    <div class="fr_home_label menu_fr_label">Bài viết</div>
+                </div>
+<!--                <div class="menu_fr_home menu_fr_item" >
+                    <div class="fr_home_icon menu_fr_icon" ><i class="fa-solid fa-user-group"></i></div>
+                    <div class="fr_home_label menu_fr_label">Mọi người</div>
+                </div>-->
+            </div>
+            <div class="container_status" id="container_status_search">
+            
+            </div>
+        </div>`;
+    document.getElementById("container").innerHTML = html;
+    searchStatus()
+}
+function searchStatus() {
+    let q = document.getElementById("searchStatus").value;
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    axios.all([axios.get('http://localhost:8080/status')]).then(axios.spread((statusResponse) => {
-        let listStatus = statusResponse.data;
-        let html = `<div class="status_create" onclick="openModalCreateStatus()">
-                <div class="create_avatar"><img src="${currentUser.avatar}" alt=""></div>
-                <div class="create_input"><span>${currentUser.fullname} ơi, bạn đang nghĩ gì thế?</span></div>
-            </div>`;
+    axios.get(`http://localhost:8080/status/search?q=${q}`).then((response) => {
+        let listStatus = response.data;
+        let html = ``;
         for (let i = 0; i < listStatus.length; i++) {
             if (listStatus[i].authorization === 2) {
                 continue;
@@ -31,17 +53,7 @@ function showAllStatus() {
                         html += `<span><i class="fa-solid fa-lock"></i></span>`
                     }
                     html += `</div>
-                    </div>`
-                    if (listStatus[i].user.id == currentUser.id) {
-                        html += `<div class="status_option">
-                        <i class="fa-solid fa-ellipsis" onclick="openModalOptionStatus(${listStatus[i].id})"></i>
-                        <div class="option_status" id="option_status_${listStatus[i].id}" >
-                            <div class="edit_status" onclick="openModalEditStatus(${listStatus[i].id})"><i class="fa-regular fa-pen-to-square"></i><span>Chỉnh sửa</span></div>
-                            <div class="delete_status" onclick="openModalDeleteStatus(${listStatus[i].id})"><i class="fa-regular fa-trash-can"></i><span>Xóa</span></div>
-                        </div>
-                    </div>`
-                    }
-                    html += `</div>
+                    </div></div>
                 <div class="status_content">
                     <div class="content"><span>${listStatus[i].content}</span></div>`
                     if (listStatus[i].usedImageSet.length != 0) {
@@ -103,7 +115,7 @@ function showAllStatus() {
                             </div>
                         </div>`
                         if (currentUser.id === listStatus[i].commentSet[j].user.id) {
-                            html += `<div class="comment_more" onclick="commentDelete(${listStatus[i].commentSet[j].id})">
+                            html += `<div class="comment_more" onclick="commentDeleteSearch(${listStatus[i].commentSet[j].id})">
                         <i class="fa-solid fa-trash-can" ></i>
                         </div>`
                         }
@@ -115,29 +127,29 @@ function showAllStatus() {
                     <div class="comment_input">
                         <div class="cmt_create_input"><p id="postComment_${listStatus[i].id}" class="editable"
                                                          contentEditable="true"></p></div>
-                        <div> <button class="create_comt_btnsent" onclick="addComment(${listStatus[i].id})"> <i class="fa-solid fa-paper-plane"></i></button> </div>                                 
+                        <div> <button class="create_comt_btnsent" onclick="addCommentSearch(${listStatus[i].id})"> <i class="fa-solid fa-paper-plane"></i></button> </div>                                 
                         <!--<div class="cmt_create_img"><i class="fa-regular fa-image"></i></div>-->
                     </div>
                 </div>
             </div>`;
                 }
-                document.getElementById("container_status").innerHTML = html;
+                document.getElementById("container_status_search").innerHTML = html;
             }))
-            }
-    }))
+        }
+    })
 }
 
-function commentDelete(id) {
+function commentDeleteSearch(id) {
     let isConfirm = confirm("Bạn có muốn xóa không?")
     if (isConfirm) {
         axios.delete(`http://localhost:8080/comment/${id}`).then((response) => {
             alert("Xóa thành công");
-            showAllStatus();
+            showSearchPage();
         })
     }
 }
 
-function addComment(idStatus) {
+function addCommentSearch(idStatus) {
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let content = document.getElementById(`postComment_${idStatus}`).innerHTML;
     if (content != "") {
@@ -152,148 +164,9 @@ function addComment(idStatus) {
             status.commentSet.push(newComment);
             console.log(status)
             axios.put(`http://localhost:8080/status/${idStatus}`, status).then(function (response) {
-                showAllStatus()
+                showSearchPage()
             }).catch((e) => {
                 console.log(e)
-            })
-        })
-    }
-}
-
-function likePost(statusID) {
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    axios.get(`
-                http://localhost:8080/status/${statusID}`).then(function (response) {
-        let status = response.data;
-        let isLiked = false;
-        let liked;
-        for (let i = 0; i < status.likedSet.length; i++) {
-            if (currentUser.id === status.likedSet[i].user.id) {
-                isLiked = true;
-                liked = status.likedSet[i];
-                break;
-            }
-        }
-        if (isLiked) {
-            axios.delete(`http://localhost:8080/like/${liked.id}`).then(function (response) {
-                document.getElementById(`totalLiked_${statusID}`).innerHTML = status.likedSet.length - 1;
-                updateLikeButton(statusID, isLiked)
-            })
-        } else {
-            let newLike = {
-                user: {
-                    id: currentUser.id
-                }
-            }
-            status.likedSet.push(newLike)
-            axios.put(`http://localhost:8080/status/${status.id}`, status).then(function (response) {
-                document.getElementById(`totalLiked_${statusID}`).innerHTML = status.likedSet.length;
-                updateLikeButton(statusID, isLiked)
-
-            })
-        }
-    })
-}
-
-function updateLikeButton(statusID, isLiked) {
-    const div = document.getElementById(`liked_${statusID}`);
-    if (div) {
-        div.innerHTML = !isLiked ? '<i class="fa-regular fa-thumbs-up" style="color: dodgerblue"></i><span style="color: dodgerblue">Thích</span>' : '<i class="fa-regular fa-thumbs-up"></i><span>Thích</span>';
-    }
-}
-
-function postStatus() {
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    let content = document.getElementById("createContent").innerHTML;
-    let srcImage = null;
-    if (document.getElementById('create_img') != null) {
-        srcImage = document.getElementById('create_img').src;
-    }
-    let author = + document.getElementById("author").value;
-    let status;
-    if (content.trim() !== '') {
-        if (srcImage !== null) {
-            status = {
-                user: {
-                    id: currentUser.id
-                }, content: content, usedImageSet: [{
-                    source: srcImage
-                }], authorization : author
-            }
-        } else {
-            status = {
-                user: {
-                    id: currentUser.id
-                }, content: content, authorization : author
-            }
-        }
-    } else if (srcImage != null) {
-        status = {
-            user: {
-                id: currentUser.id
-            }, content: content, usedImageSet: [{
-                source: srcImage
-            }], authorization : author
-        }
-    }
-    axios.post('http://localhost:8080/status', status).then((response) => {
-        document.getElementById('createContent').textContent = '';
-        let img = document.getElementById('create_img');
-        if (img != null) {
-            img.remove();
-        }
-        document.getElementById('create_delete_image').style.visibility = 'hidden';
-        document.getElementById('contain_create_img').style.border = 'none';
-        document.getElementById('postStatus').style.backgroundColor = '#ced0d4';
-        document.getElementById('postStatus').disabled = true;
-        showAllStatus()
-        openModalCreateStatus()
-    })
-}
-
-function deleteStatus() {
-    let statusID = +(document.getElementById("remove_status").value);
-    axios.delete(`http://localhost:8080/status/${statusID}`).then((response) => {
-        openModalDeleteStatus();
-        showAllStatus();
-
-    })
-}
-
-function editStatus() {
-    let targetStatus = +(document.getElementById("editStatus").value);
-    if (targetStatus !== 0) {
-        axios.get(`http://localhost:8080/status/${targetStatus}`).then((response) => {
-            let status = response.data;
-            let content = document.getElementById("editContent").innerHTML;
-            let srcImage = null;
-            if (document.getElementById('edit_img') != null) {
-                srcImage = document.getElementById('edit_img').src;
-            }
-            let author =+ document.getElementById("editAuthor").value;
-            if (content.trim() !== '') {
-                if (srcImage !== null) {
-                    let usedImageSet = [{source: srcImage}]
-                    status.usedImageSet = usedImageSet;
-                }
-            } else if (srcImage != null) {
-                let usedImageSet = [{source: srcImage}]
-                status.usedImageSet = usedImageSet;
-            }
-            status.content = content;
-            status.authorization = author;
-            axios.put(`http://localhost:8080/status/${status.id}`, status).then((response) => {
-                document.getElementById('editContent').textContent = '';
-                let img = document.getElementById('edit_img');
-                if (img != null) {
-                    img.remove();
-                }
-                document.getElementById('create_deledit_image').style.visibility = 'hidden';
-                document.getElementById('contain_edit_img').style.border = 'none';
-                document.getElementById('editStatus').style.backgroundColor = '#ced0d4';
-                document.getElementById('editStatus').disabled = true;
-                showAllStatus()
-                closeModalEditStatus()
             })
         })
     }

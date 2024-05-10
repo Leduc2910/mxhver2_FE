@@ -88,9 +88,9 @@ function showFriendRequest() {
         let countReq = 0;
         for (let i = listRela.length - 1; i >= 0; i--) {
             if (listRela[i].status === 0 && currentUser.id === listRela[i].user2.id) {
-                if (countReq >= 14) {
-                    break;
-                }
+                // if (countReq >= 14) {
+                //     break;
+                // }
                 html += `<div class="friend_req">
                         <div class="friend_req_avatar" onclick="showProfile(${listRela[i].user1.id})"><img src="${listRela[i].user1.avatar}" alt=""></div>
                         <div class="friend_req_info">
@@ -107,11 +107,12 @@ function showFriendRequest() {
                 countReq++;
             }
         }
-        if (countReq >= 14) {
-            html += `<div class="friend_req_more">
-                    <span>Xem thêm</span><i class="fa-solid fa-caret-down"></i>
-                </div>`;
-        } else if (countReq === 0) {
+        // if (countReq >= 14) {
+        //     html += `<div class="friend_req_more">
+        //             <span>Xem thêm</span><i class="fa-solid fa-caret-down"></i>
+        //         </div>`;
+        // } else
+        if (countReq === 0) {
             html += `<div class="no_friend_req">
                         Không có lời mời mới
                     </div>`;
@@ -129,13 +130,13 @@ function showFriendSuggest() {
             let html = ``;
             let countSug = 0;
             for (let i = 0; i < listUser.length; i++) {
-                if (countSug >= 14) {
-                    break;
-                }
+                // if (countSug >= 14) {
+                //     break;
+                // }
 
                 let checkedFriend = false;
                 if (listUser[i].id !== currentUser.id) {
-                for (let j = 0; j < listRela.length; j++) {
+                    for (let j = 0; j < listRela.length; j++) {
                         if (listRela[j].user1.id === listUser[i].id || listRela[j].user2.id === listUser[i].id) {
                             checkedFriend = true;
                             break;
@@ -156,11 +157,12 @@ function showFriendSuggest() {
                     }
                 }
             }
-            if (countSug >= 14) {
-                html += `<div class="friend_req_more">
-                    <span>Xem thêm</span><i class="fa-solid fa-caret-down"></i>
-                </div>`;
-            } else if (countSug === 0) {
+            // if (countSug >= 14) {
+            //     html += `<div class="friend_req_more">
+            //         <span>Xem thêm</span><i class="fa-solid fa-caret-down"></i>
+            //     </div>`;
+            // } else
+            if (countSug === 0) {
                 html += `<div class="no_friend_req">
                         Không có gợi ý mới
                     </div>`;
@@ -169,6 +171,7 @@ function showFriendSuggest() {
         })
     })
 }
+
 function showFriendSent() {
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     axios.get(`http://localhost:8080/relationship`).then((response) => {
@@ -177,9 +180,9 @@ function showFriendSent() {
         let countReq = 0;
         for (let i = listRela.length - 1; i >= 0; i--) {
             if (listRela[i].status === 0 && currentUser.id === listRela[i].user1.id) {
-                if (countReq >= 14) {
-                    break;
-                }
+                // if (countReq >= 14) {
+                //     break;
+                // }
                 html += `<div class="friend_req">
                         <div class="friend_req_avatar" onclick="showProfile(${listRela[i].user2.id})"><img src="${listRela[i].user2.avatar}" alt=""></div>
                         <div class="friend_req_info">
@@ -193,11 +196,12 @@ function showFriendSent() {
                 countReq++;
             }
         }
-        if (countReq >= 14) {
-            html += `<div class="friend_req_more">
-                    <span>Xem thêm</span><i class="fa-solid fa-caret-down"></i>
-                </div>`;
-        } else if (countReq === 0) {
+        // if (countReq >= 14) {
+        //     html += `<div class="friend_req_more">
+        //             <span>Xem thêm</span><i class="fa-solid fa-caret-down"></i>
+        //         </div>`;
+        // } else
+        if (countReq === 0) {
             html += `<div class="no_friend_req">
                         Chưa gửi lời mời
                     </div>`;
@@ -205,30 +209,33 @@ function showFriendSent() {
         document.getElementById("listfr_sent").innerHTML = html;
     })
 }
+
 function acceptFriendPage(targetRela, targetPro) {
     axios.get(`http://localhost:8080/relationship/${targetRela}`).then((relaResponse) => {
         let rela = relaResponse.data;
         rela.status = 1;
-        axios.put(`http://localhost:8080/relationship/${rela.id}`,rela).then((response) => {
+        axios.put(`http://localhost:8080/relationship/${rela.id}`, rela).then((response) => {
             showFriendPage();
         })
     })
 }
+
 function delRequestPage(targetRela, targetPro) {
     axios.delete(`http://localhost:8080/relationship/${targetRela}`).then((response) => {
         showFriendPage();
     })
 }
+
 function addFriendPage(targetUserID) {
-    let currentUser= JSON.parse(localStorage.getItem("currentUser"));
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let targetUser = {
-        id : targetUserID
+        id: targetUserID
     }
     let relationship = {
-        user1 : currentUser,
-        user2 : targetUser
+        user1: currentUser,
+        user2: targetUser
     }
-    axios.post(`http://localhost:8080/relationship`,relationship).then((response) => {
+    axios.post(`http://localhost:8080/relationship`, relationship).then((response) => {
         showFriendPage();
     })
 }
