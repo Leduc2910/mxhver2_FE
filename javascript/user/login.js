@@ -7,7 +7,7 @@ function showLoginPage() {
         </div>
         <div class="form_login">
             <input type="text" id="username" placeholder="Email hoặc số điện thoại">
-            <input type="text" id="password" placeholder="Mật khẩu">
+            <input type="password" id="password" placeholder="Mật khẩu">
             <button class="login_button" onclick="login()">Đăng nhập</button>
             <span class="forgot_password">Quên mật khẩu?</span>
             <hr>
@@ -26,8 +26,8 @@ function showLoginPage() {
                 </div>
                 <div class="regis_email"><input type="text" name="username" id="username_regis" placeholder="Username"></div>
                 <div class="regis_confirmemail"><input type="text" name="email" id="email" placeholder="Email"></div>
-                <div class="regis_password"><input type="text" name="password" id="password_regis" placeholder="Mật khẩu"></div>
-                <div class="regis_password"><input type="text" name="password" id="confirmpassword" placeholder="Xác nhận mật khẩu"></div>
+                <div class="regis_password"><input type="password" name="password" id="password_regis" placeholder="Mật khẩu"></div>
+                <div class="regis_password"><input type="password" name="password" id="confirmpassword" placeholder="Xác nhận mật khẩu"></div>
                 <div class="regis_birthday">
                     <label>Ngày sinh <i class="fa-solid fa-circle-question"></i></label>
                     <div class="regis_birthdayinput"><input type="text" name="" id="birth_day" placeholder="Ngày">
@@ -103,7 +103,14 @@ function register() {
     let confirmPassword = document.getElementById('confirmpassword').value;
     let email = document.getElementById('email').value;
     let birthday = document.getElementById('birth_day').value.trim() + "/" + document.getElementById('birth_month').value.trim() + "/" + document.getElementById('birth_year').value.trim();
-    let gender = +(document.getElementsByName("gender").item(0).value);
+    let selectedGender;
+    let genderInputs = document.getElementsByName("gender");
+    for (let i = 0; i < genderInputs.length; i++) {
+        if (genderInputs[i].checked) {
+            selectedGender = +(genderInputs[i].value);
+            break;
+        }
+    }
     let user = {
         fullname : fullname,
         username: username,
@@ -111,7 +118,7 @@ function register() {
         confirmPassword: confirmPassword,
         email: email,
         birthday: birthday,
-        gender: gender
+        gender: selectedGender
     }
     axios.post(`http://localhost:8080/user`, user).then(function (response) {
         showLoginPage();
