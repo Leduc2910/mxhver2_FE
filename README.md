@@ -16,8 +16,8 @@ Phần frontend được xây dựng bằng **HTML**, **CSS**, **JavaScript** v�
 - 📜 **Xem trang cá nhân** của người khác.
 
 ## Công nghệ sử dụng
-- **HTML** – Tạo cấu trúc trang web.
-- **CSS** – Thiết kế giao diện và responsive.
+- **HTML**
+- **CSS** 
 - **JavaScript** – Xử lý logic phía client.
 - **Axios** – Gọi API từ backend (Java Spring).
 - **RESTful API** – Kết nối với backend.
