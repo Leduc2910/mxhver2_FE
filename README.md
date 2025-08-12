@@ -1,10 +1,11 @@
-# MXH Ver 2 - Frontend
+# MXH Ver 2 - Facebook Basic Frontend
 
 ## Tổng quan dự án
 Đây là phần **Frontend** của dự án **MXH Ver 2**, mô phỏng và clone các chức năng cơ bản của mạng xã hội Facebook.  
 Phần frontend được xây dựng bằng **HTML**, **CSS**, **JavaScript** và **Axios** để gọi API từ backend.  
 
-Video demo: [Xem tại đây](https://youtu.be/F5boqsBHszo)
+##  Video Demo
+[![Xem video demo backend Facebook Clone](https://img.youtube.com/vi/F5boqsBHszo/maxresdefault.jpg)](https://www.youtube.com/watch?v=F5boqsBHszo)
 
 ## Tính năng chính
 - 🔗 **Đăng nhập / Đăng ký** tài khoản.
